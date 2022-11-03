@@ -1,0 +1,33 @@
+echo "Iniciando atualização"
+
+echo "O script de atualização da Hidraumak foi executado pela última vez em:" > /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+
+snap refresh
+echo " " >> /home/henrique/0_data_atualizado.txt
+echo "Snap atualizado em:" >> /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+
+flatpak update -y
+echo " " >> /home/henrique/0_data_atualizado.txt
+echo "Flatpak atualizado em:" >> /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+
+pamac checkupdate --no-confirm
+#pamac checkupdate --aur --no-confirm
+echo " " >> /home/henrique/0_data_atualizado.txt
+echo "Verificação das atualizações:" >> /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+
+pamac upgrade --force-refresh --no-confirm
+#pamac upgrade --aur --force-refresh --no-confirm
+echo " " >> /home/henrique/0_data_atualizado.txt
+echo "Instalação das atualizações:" >> /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+
+pamac clean --no-confirm
+echo " " >> /home/henrique/0_data_atualizado.txt
+echo "Limpeza de pacotes:" >> /home/henrique/0_data_atualizado.txt
+echo $(date) >> /home/henrique/0_data_atualizado.txt
+echo "Obs: AUR desativado" >> /home/henrique/0_data_atualizado.txt
+#shutdown -P
