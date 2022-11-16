@@ -1,0 +1,14 @@
+# Copiar arquivo para /usr/bin
+sudo cp * /usr/bin
+
+# Ver se o cron está ativo
+systemctl status cronie
+
+# Ativar o cron
+systemctl enable --now cronie.service
+
+# Rodar crontab -e como root
+# Colocar dentro do arquivo crontab
+59 03 * * * atualizar_cron
+
+# crontab -l para verificar o resultado
