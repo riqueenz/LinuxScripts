@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#pamac install tigervnc
+#vncpasswd
+
+#rodar vnc
+x0vncserver -rfbauth ~/.vnc/passwd &
