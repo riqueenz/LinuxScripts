@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper,final]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{An\'alise dimensional \\[1ex] \large PKC - 20 - Vega Lift}
+\author{Henrique Enzweiler}
+\date{21 de dezembro de 2022}
+\begin{document}
+
+\maketitle
+
+\chapter{Sistema hidr\'aulico}
+
+\section{Sele\c{c}\~ao do tubo}
+
+Um tubo de $\boldsymbol{3\frac{1}{2}"}$ \textbf{(88,9 mm)} \'e usado
+para fazer a camisa do cilindro. Assim, a press\~ao necess\'aria para
+atingir as \textbf{10 toneladas-for\c{c}a }\'e\textbf{ 164,2 bar}.
+Veja o c\'alculo abaixo:\\
+
+$A=\frac{\pi.D^{2}}{4}$ | $A=\frac{\pi.(88,9\,mm)^{2}}{4}$ | $\boldsymbol{A=6207,2\,mm^{2}=62,072\,cm^{2}}$\\
+
+$P=\frac{F}{A}$ | $P=\frac{10000\,kgf}{62,072\,cm^{2}}$ | $\boldsymbol{P=161,1\frac{kgf}{cm^{2}}=164,2\,bar}$\\
+
+\textbf{Conclus\~ao:} Como a pressão nominal de 164,2 bar \'e menor que a press\~ao adimiss\'ivel de 180 bar, o tubo pode ser esse.
+
+\section{C\'alculo da vaz\~ao}
+
+Para calcular a vaz\~ao, vamos primeiro calcular o volume do cilindro.\\
+
+$V=A.S$, sendo S o curso do cilindro. Sabendo que o curso \'e de
+$200\,mm$, podemos calcular o volume interno do cilindro:\\
+
+$V=6207,2\,mm^{2}.200\,mm$ | $\boldsymbol{V=1241433\,mm^{3}=1,24\,litros}$\\
+
+Desejamos que o cilindro avance em $4\,s.$ Assim, a velocidade necess\'aria \'e de:\\
+
+$v=\frac{S}{T}$ | $v=\frac{200\,mm}{4\,s}$| $\boldsymbol{v=50\,mm/s}$\\
+
+A vaz\~ao da bomba deve ser de:\\
+
+$Q=\frac{V}{T}$ | $Q=\frac{1,24\,litros}{4\,s}$ | $Q=0,31\,\frac{litros}{s}.(\frac{60\,s}{1\,min})$
+| $\boldsymbol{Q=18,6\,litros/min}$\\
+
+Podemos ainda usar a \'Area e a velocidade:\\
+
+$Q=A.v$ | $Q=6207,2\,mm^{2}.50\frac{mm}{s}$ | $Q=310360\frac{mm^{3}}{s}.(\frac{1\,litro}{1000000\,mm^{3}}.\frac{60\,s}{1\,min})$
+| $\boldsymbol{Q=18,6\,litros/min}$
+\end{document}
