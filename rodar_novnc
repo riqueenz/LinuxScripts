@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#sudo apt -y install novnc python3-websockify python3-numpy
+#pamac install python-pip
+#pip install novnc
+#pip install websockify
+#pip install numpy
+
+#gerar certificados
+#openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
+
+#pamac install tigervnc
+#vncpasswd
+
+#rodar vnc
+x0vncserver -rfbauth ~/.vnc/passwd &
+websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 6080 localhost:5900
