@@ -1,0 +1,5 @@
+docker run --rm -d -p 6080:80 -v $PWD:/workspace:rw -e USER=username -e PASSWORD=password -e RESOLUTION=1280x720 --name ubuntu-novnc fredblgr/ubuntu-novnc:20.04
+
+docker run -dP --mount source=/home/henrique/Downloads,target=/home/headless/Downloads accetto/xubuntu-vnc-novnc
+
+docker run -dP -e VNC_PW=teste -p 26902:6901 xubuntu-henrique-novnc
