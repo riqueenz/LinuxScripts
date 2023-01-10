@@ -1,5 +1,31 @@
 docker run --rm -d -p 6080:80 -v $PWD:/workspace:rw -e USER=username -e PASSWORD=password -e RESOLUTION=1280x720 --name ubuntu-novnc fredblgr/ubuntu-novnc:20.04
 
+# Sistema lxqt desatualizado
 docker run -dP --mount source=/home/henrique/Downloads,target=/home/headless/Downloads accetto/xubuntu-vnc-novnc
 
-docker run -dP -e VNC_PW=teste -p 26902:6901 xubuntu-henrique-novnc
+docker run -dP -e VNC_PW=teste --name henrique-novnc -p 26902:6901 xubuntu-henrique-novnc
+
+docker run -it --entrypoint /bin/bash archlinux
+
+docker run -it --entrypoint /bin/bash -p 5900:5900 -p 6080:6080 -d kde-novnc
+
+docker run --rm -p 8083:8083 -ti --name arch-novnc -e DISPLAY=:0.0 ponsfrilus/arch-novnc:latest
+
+docker run -it --entrypoint /bin/bash --name henrique-novnc -p 5:5 -p 6081:6081 -d henrique-ubuntu2210-novnc
+
+Update existing packages and reboot the Debian 10 system.
+Edit the file /etc/apt/sources.list using a text editor and replace each instance of buster with bullseye. Next find the security line, replace keyword buster/updates with bullseye-security.
+
+Update the packages index on Debian Linux, run:
+
+sudo apt update
+
+Prepare for the operating system minimal system upgrade, run:
+
+sudo apt upgrade --without-new-pkgs
+
+Finally, update Debian 10 to Debian 11 bullseye by running:
+
+sudo apt full-upgrade
+
+Reboot the Linux system so that you can boot into Debian 11 Bullseye
