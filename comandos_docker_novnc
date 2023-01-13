@@ -13,6 +13,8 @@ docker run --rm -p 8083:8083 -ti --name arch-novnc -e DISPLAY=:0.0 ponsfrilus/ar
 
 docker run -it --entrypoint /bin/bash --name henrique-novnc -p 5:5 -p 6081:6081 -d henrique-ubuntu2210-novnc
 
+docker run -dP -e VNC_PW=teste --name henrique-novnc -p 26902:6901 xubuntu-henrique-novnc
+
 Update existing packages and reboot the Debian 10 system.
 Edit the file /etc/apt/sources.list using a text editor and replace each instance of buster with bullseye. Next find the security line, replace keyword buster/updates with bullseye-security.
 
