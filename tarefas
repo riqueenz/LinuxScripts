@@ -1,6 +1,7 @@
 #!/bin/bash
 cd $HOME/Documentos/GitHub/Notas/
 git fetch origin
+git pull origin
 gedit $HOME/Documentos/GitHub/Notas/A_fazer.md
 git add *
 git commit * -m "Atualizar tarefas"
