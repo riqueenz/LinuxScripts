@@ -31,8 +31,8 @@ echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
 
+cd $HOME
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 cp * /usr/bin
-rm -rf LinuxScripts
-#shutdown -P
+rm -rf $HOME/LinuxScripts
