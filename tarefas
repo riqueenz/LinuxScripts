@@ -1,4 +1,6 @@
 #!/bin/bash
+\cp "$HOME/Downloads/Quadro de projetos - Em curso.tsv" "$HOME/Documentos/GitHub/Notas/Quadro de projetos"
+\cp "$HOME/Downloads/Quadro de projetos - Entregue em 2023.tsv" "$HOME/Documentos/GitHub/Notas/Quadro de projetos"
 cd $HOME/Documentos/GitHub/Notas/
 git rebase
 gedit $HOME/Documentos/GitHub/Notas/A_fazer.md
