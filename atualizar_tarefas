@@ -1,6 +1,6 @@
 #!/bin/bash
 cd $HOME/Documentos/GitHub/Notas/
-git fetch origin
+git rebase
 git add *
 git commit * -m "Atualizar tarefas"
 git push -u origin main
