@@ -1,9 +1,13 @@
 #!/bin/bash
+mv $HOME/Documentos/GitHub/Notas $HOME/Documentos/GitHub/Notas-backup
+git clone https://github.com/riqueenz/Notas.git
 \cp "$HOME/Downloads/Quadro de projetos - Em curso.tsv" "$HOME/Documentos/GitHub/Notas/Quadro de projetos"
 \cp "$HOME/Downloads/Quadro de projetos - Entregue em 2023.tsv" "$HOME/Documentos/GitHub/Notas/Quadro de projetos"
 cd $HOME/Documentos/GitHub/Notas/
-git rebase
 gedit $HOME/Documentos/GitHub/Notas/A_fazer.md
 git add *
 git commit * -m "Atualizar tarefas"
 git push -u origin main
+if [ -d "$HOME/Documentos/GitHub/Notas/" ]; then
+  rm -rf $HOME/Documentos/GitHub/Notas-backup
+fi
