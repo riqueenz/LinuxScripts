@@ -1,5 +1,6 @@
 #!/bin/bash
 mv $HOME/Documentos/GitHub/Notas $HOME/Documentos/GitHub/Notas-backup
+cd $HOME/Documentos/GitHub
 git clone https://github.com/riqueenz/Notas.git
 cd $HOME/Documentos/GitHub/Notas/
 git add *
