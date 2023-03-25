@@ -32,7 +32,8 @@ echo $(date) >> $HOME/0_data_atualizado.txt
 echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
 
 cd $HOME
+rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 cp * /usr/bin
-rm -rf $HOME/LinuxScripts
+rm -rf ../LinuxScripts
