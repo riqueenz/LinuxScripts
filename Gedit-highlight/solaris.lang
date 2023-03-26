@@ -115,7 +115,7 @@
     <context id="preprocessor" style-ref="preprocessor" end-at-line-end="true">
       <start extended="true">
         \%{preproc-start}
-        (define|undef|error|pragma|ident|if(n?def)?|else|elif|endif|line|warning)
+        (define|msg|undef|error|pragma|ident|if(n?def)?|else|elif|endif|line|warning)
         \b
       </start>
       <include>
@@ -208,6 +208,9 @@
       <keyword>goto</keyword>
       <keyword>set</keyword>
       <keyword>reset</keyword>
+      <keyword>GOTO</keyword>
+      <keyword>SET</keyword>
+      <keyword>RESET</keyword>
       <keyword>if</keyword>
       <keyword>return</keyword>
       <keyword>switch</keyword>
@@ -265,6 +268,19 @@
       <keyword>define digital input</keyword>
       <keyword>define digital output</keyword>
       <keyword>define protocol registers</keyword>
+      <keyword>Define Constants</keyword>
+      <keyword>define constants</keyword>
+      <keyword>DEFINE CONSTANTS</keyword>
+      <keyword>DEFINE PRIMARY KEYBOARD</keyword>
+      <keyword>define primary keyboard</keyword>
+      <keyword>DEFINE DISPLAY LCD</keyword>
+      <keyword>DEFINE KEYBOARD</keyword>
+      <keyword>DEFINE VERSION</keyword>
+      <keyword>DEFINE ANALOGIC INPUT</keyword>
+      <keyword>DEFINE ANALOGIC OUTPUT</keyword>
+      <keyword>DEFINE DIGITAL INPUT</keyword>
+      <keyword>DEFINE DIGITAL OUTPUT</keyword>
+      <keyword>DEFINE PROTOCOL REGISTERS</keyword>
       <keyword>wchar_t</keyword>
       <keyword>wint_t</keyword>
     </context>
