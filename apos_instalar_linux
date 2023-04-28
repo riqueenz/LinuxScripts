@@ -1,0 +1,19 @@
+#!/bin/bash
+clear
+if ! [ -x "$(command -v apt)" ]; then
+  echo 'apt não instalado.' >&2
+else
+  echo 'apt instalado.' >&2
+fi
+if ! [ -x "$(command -v pacman)" ]; then
+  echo 'pacman não instalado.' >&2
+else
+  echo 'pacman instalado.' >&2
+fi
+if ! [ -x "$(command -v flatpak)" ]; then
+  echo 'flatpak não instalado.' >&2
+else
+  echo 'flatpak instalado.' >&2
+fi
+echo "FIM"
+
