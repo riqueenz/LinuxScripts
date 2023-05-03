@@ -1,2 +1,4 @@
 #!/bin/bash
-crontab crontab_tabela
+crontab $(pwd)/crontab_tabela
+clear
+cat $(pwd)/crontab_tabela
