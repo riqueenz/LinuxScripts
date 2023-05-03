@@ -1,4 +1,2 @@
 #!/bin/bash
 crontab $(pwd)/crontab_tabela
-clear
-cat $(pwd)/crontab_tabela
