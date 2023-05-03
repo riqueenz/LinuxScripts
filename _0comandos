@@ -11,13 +11,6 @@ systemctl enable --now cronie.service
 # Colocar dentro do arquivo crontab
 59 03 * * * atualizar_cron
 
-
-echo "59 03 * * * atualizar_cron" >> crontab_new
-echo "45 07 * * * atualizar_cron" >> crontab_new
-echo "52 11 * * * atualizar_cron" >> crontab_new
-echo "05 18 * * * atualizar_cron" >> crontab_new
-echo "47 21 * * * atualizar_cron" >> crontab_new
-
 crontab crontab_new
 rm crontab_new
 

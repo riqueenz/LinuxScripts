@@ -1,2 +1,2 @@
 #!/bin/bash
-crontab crontab_tabela
+crontab /usr/bin/crontab_tabela
