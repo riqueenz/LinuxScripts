@@ -1,4 +1,5 @@
 echo "Iniciando atualização"
+./crontab_configurar
 
 echo "O script de atualização da Hidraumak foi executado pela última vez em:" > $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
