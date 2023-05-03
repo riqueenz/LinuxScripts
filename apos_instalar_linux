@@ -12,7 +12,7 @@ echo " "
 
 # Detectar o gerenciador de pacotes da distro
 INSTALAR="echo"
-if [ $DISTRO -eq "debian" ]; then
+if [ $DISTRO == "debian" ]; then
   echo 'O gerenciador de pacotes apt está instalado' >&2
   INSTALAR="sudo apt install -y"
 else
@@ -128,32 +128,32 @@ else
 fi
 if ! [ -x "$(command -v snap)" ]; then
   echo 'snapd não instalado.' >&2
-  if [ $DISTRO -eq "arch" ]; then
+  if [ $DISTRO == "arch" ]; then
     git clone https://aur.archlinux.org/snapd.git
     cd snapd
     makepkg -si
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ $DISTRO -eq "centos" ]; then
+  if [ $DISTRO == "centos" ]; then
     sudo yum install epel-release
     sudo yum install snapd
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ $DISTRO -eq "debian" ]; then
+  if [ $DISTRO == "debian" ]; then
     sudo apt update
     sudo apt install snapd
   fi
-  if [ $DISTRO -eq "fedora" ]; then
+  if [ $DISTRO == "fedora" ]; then
     sudo dnf install snapd
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ $DISTRO -eq "fedora" ]; then
+  if [ $DISTRO == "fedora" ]; then
     sudo dnf install snapd
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ $DISTRO -eq "manjaro" ]; then
+  if [ $DISTRO == "manjaro" ]; then
     sudo pacman -S snapd
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
