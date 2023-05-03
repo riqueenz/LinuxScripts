@@ -1,9 +1,24 @@
 #!/bin/bash
 clear
 
+# Detectar distro
+DISTRO="Desconhecido"
+. /etc/os-release
+echo " "
+echo "Distribuição linux detectada:"
+DISTRO=$ID
+echo "$DISTRO"
+echo " "
+
 # Detectar o gerenciador de pacotes da distro
 INSTALAR="echo"
-DISTRO="Desconhecido"
+if [ $DISTRO -eq "debian" ]; then
+  echo 'O gerenciador de pacotes apt está instalado' >&2
+  INSTALAR="sudo apt install -y"
+else
+  echo 'Não é Debian' >&2
+fi
+
 if ! [ -x "$(command -v apt)" ]; then
   echo 'O gerenciador de pacotes apt não está instalado' >&2
 else
@@ -89,14 +104,6 @@ else
   INSTALAR="guix install"
 fi
 
-# Detectar distro
-. /etc/os-release
-echo " "
-echo "Distribuição linux detectada:"
-DISTRO=$ID
-echo "$DISTRO"
-echo " "
-
 # Instalar apps essenciais para o terminal
 if ! [ -x "$(command -v git)" ]; then
   $INSTALAR git
@@ -121,32 +128,32 @@ else
 fi
 if ! [ -x "$(command -v snap)" ]; then
   echo 'snapd não instalado.' >&2
-  if [ DISTRO -eq "arch" ]; then
+  if [ $DISTRO -eq "arch" ]; then
     git clone https://aur.archlinux.org/snapd.git
     cd snapd
     makepkg -si
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ DISTRO -eq "centos" ]; then
+  if [ $DISTRO -eq "centos" ]; then
     sudo yum install epel-release
     sudo yum install snapd
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ DISTRO -eq "debian" ]; then
+  if [ $DISTRO -eq "debian" ]; then
     sudo apt update
     sudo apt install snapd
   fi
-  if [ DISTRO -eq "fedora" ]; then
+  if [ $DISTRO -eq "fedora" ]; then
     sudo dnf install snapd
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ DISTRO -eq "fedora" ]; then
+  if [ $DISTRO -eq "fedora" ]; then
     sudo dnf install snapd
     sudo ln -s /var/lib/snapd/snap /snap
   fi
-  if [ DISTRO -eq "manjaro" ]; then
+  if [ $DISTRO -eq "manjaro" ]; then
     sudo pacman -S snapd
     sudo systemctl enable --now snapd.socket
     sudo ln -s /var/lib/snapd/snap /snap
@@ -164,7 +171,7 @@ echo " "
 # Instalando aplicativos flatpak e snap
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub --system com.google.Chrome
-snap install freecad-realthunder
+snap install freecad-mechanical
 flatpak install flathub --system com.anydesk.Anydesk
 flatpak install flathub --system eu.scarpetta.PDFMixTool
 flatpak install flathub --system io.github.shiftey.Desktop # GitHub Desktop
@@ -196,6 +203,6 @@ fi
 if ! [ -x "$(command -v desktopeditors)" ]; then
   flatpak install flathub --system org.onlyoffice.desktopeditors
 else
-  echo 'gimp já estava instalado.' >&2
+  echo 'onlyoffice já estava instalado.' >&2
 fi
 
