@@ -14,9 +14,8 @@ echo " "
 INSTALAR="echo"
 if [ $DISTRO == "debian" ]; then
   echo 'O gerenciador de pacotes apt está instalado' >&2
+  apt install -y sudo
   INSTALAR="sudo apt install -y"
-else
-  echo 'Não é Debian' >&2
 fi
 
 if ! [ -x "$(command -v apt)" ]; then
@@ -144,10 +143,6 @@ if ! [ -x "$(command -v snap)" ]; then
   if [ $DISTRO == "debian" ]; then
     sudo apt update
     sudo apt install snapd
-  fi
-  if [ $DISTRO == "fedora" ]; then
-    sudo dnf install snapd
-    sudo ln -s /var/lib/snapd/snap /snap
   fi
   if [ $DISTRO == "fedora" ]; then
     sudo dnf install snapd
