@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $HOME/snap/freecad/common/Mod
 git clone https://github.com/kbwbe/A2plus.git
-#git clone https://github.com/shaise/FreeCAD_SheetMetal.git
+git clone https://github.com/shaise/FreeCAD_SheetMetal.git
 git clone https://github.com/looooo/freecad.gears.git
 git clone https://github.com/shaise/FreeCAD_FastenersWB.git
 git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/mooc-workbench.git
