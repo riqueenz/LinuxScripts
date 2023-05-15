@@ -1,0 +1,14 @@
+#!/bin/bash
+cd $HOME/snap/freecad-realthunder/common
+rm system.cfg
+rm user.cfg
+wget https://raw.githubusercontent.com/riqueenz/Free-CAD-config/main/Configura%C3%A7%C3%B5es%20do%20usu%C3%A1rio/FreeCAD%20Link/system.cfg
+wget https://raw.githubusercontent.com/riqueenz/Free-CAD-config/main/Configura%C3%A7%C3%B5es%20do%20usu%C3%A1rio/FreeCAD%20Link/user.cfg
+cd $HOME/snap/freecad-realthunder/common/Mod
+git clone https://github.com/kbwbe/A2plus.git
+git clone https://github.com/shaise/FreeCAD_SheetMetal.git
+git clone https://github.com/looooo/freecad.gears.git
+git clone https://github.com/shaise/FreeCAD_FastenersWB.git
+git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/mooc-workbench.git
+#git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/Glass.git
+git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/TabBar.git
