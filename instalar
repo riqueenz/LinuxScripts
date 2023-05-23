@@ -105,11 +105,11 @@ echo "$DISTRO"
 echo " "
 
 # Instalar pacote usando gerenciador de pacotes da distro
-if ! [ -x "$(command -v $0)" ]; then
+if ! [ -x "$(command -v $1)" ]; then
   echo "O pacote $1 não está instalado" >&2
   echo "Instalando $1 ..." >&2
   echo "$INSTALAR $1"
-  $INSTALAR $0
+  $INSTALAR $1
 else
   echo "O pacote $1 já estava instalado" >&2
 fi
