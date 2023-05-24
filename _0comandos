@@ -1,3 +1,6 @@
+# Resetar senha após errar a senha 3 vezes
+faillock --user henrique --reset
+
 # Copiar arquivo para /usr/bin
 sudo cp * /usr/bin
 
