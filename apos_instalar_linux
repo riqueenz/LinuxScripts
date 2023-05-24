@@ -207,12 +207,12 @@ cd $HOME
 rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
-\cp * /usr/bin
-\cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+sudo \cp * /usr/bin
 if [ $DISTRO == "manjaro" ]; then
-  sudo pacman -S snapd
-  sudo systemctl enable --now snapd.socket
-  sudo ln -s /var/lib/snapd/snap /snap
+  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+fi
+if [ $DISTRO == "arch" ]; then
+  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
 fi
 rm -rf ../LinuxScripts
 cd $HOME

@@ -1,4 +1,13 @@
 #!/bin/bash
+# Detectar distro
+DISTRO="Desconhecido"
+. /etc/os-release
+echo " "
+echo "Distribuição linux detectada:"
+DISTRO=$ID
+echo "$DISTRO"
+echo " "
+
 echo "Iniciando atualização"
 echo "O script de atualização da Hidraumak foi executado pela última vez em:" > $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
@@ -10,7 +19,16 @@ rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 \cp * /usr/bin
-\cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+if [ $DISTRO == "manjaro" ]; then
+  echo "Atualizando configuração do faillock"
+  echo "Configuração do faillock atualizado em:" > $HOME/0_data_atualizado.txt
+  \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+fi
+if [ $DISTRO == "arch" ]; then
+  echo "Atualizando configuração do faillock"
+  echo "Configuração do faillock atualizado em:" > $HOME/0_data_atualizado.txt
+  \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+fi
 rm -rf ../LinuxScripts
 cd $HOME
 echo $(date) >> $HOME/0_data_atualizado.txt
