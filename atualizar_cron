@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Iniciando atualização"
 echo "O script de atualização da Hidraumak foi executado pela última vez em:" > $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
@@ -9,6 +10,7 @@ rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 \cp * /usr/bin
+\cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
 rm -rf ../LinuxScripts
 cd $HOME
 echo $(date) >> $HOME/0_data_atualizado.txt
