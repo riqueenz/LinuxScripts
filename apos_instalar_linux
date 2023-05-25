@@ -165,38 +165,38 @@ echo " "
 
 # Instalando aplicativos flatpak e snap
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub --system com.google.Chrome
+flatpak install flathub --system --assumeyes com.google.Chrome
 snap install freecad-mechanical
-flatpak install flathub --system com.anydesk.Anydesk
-flatpak install flathub --system eu.scarpetta.PDFMixTool
-flatpak install flathub --system io.github.shiftey.Desktop # GitHub Desktop
+flatpak install flathub --system --assumeyes com.anydesk.Anydesk
+flatpak install flathub --system --assumeyes eu.scarpetta.PDFMixTool
+flatpak install flathub --system --assumeyes io.github.shiftey.Desktop # GitHub Desktop
 if ! [ -x "$(command -v openshot)" ]; then
-  flatpak install flathub --system org.openshot.OpenShot
+  flatpak install flathub --system --assumeyes org.openshot.OpenShot
 else
   echo 'openshot já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v vlc)" ]; then
-  flatpak install flathub --system org.videolan.VLC
+  flatpak install flathub --system --assumeyes org.videolan.VLC
 else
   echo 'vlc já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v remmina)" ]; then
-  flatpak install flathub --system org.remmina.Remmina
+  flatpak install flathub --system --assumeyes org.remmina.Remmina
 else
   echo 'remmina já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v libreoffice)" ]; then
-  flatpak install flathub --system org.libreoffice.LibreOffice
+  flatpak install flathub --system --assumeyes org.libreoffice.LibreOffice
 else
   echo 'libreoffice já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v gimp)" ]; then
-  flatpak install flathub --system org.gimp.GIMP
+  flatpak install flathub --system --assumeyes org.gimp.GIMP
 else
   echo 'gimp já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v desktopeditors)" ]; then
-  flatpak install flathub --system org.onlyoffice.desktopeditors
+  flatpak install flathub --system --assumeyes org.onlyoffice.desktopeditors
 else
   echo 'onlyoffice já estava instalado.' >&2
 fi
