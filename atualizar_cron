@@ -6,9 +6,13 @@ echo "O script de atualização da Hidraumak foi executado pela última vez em:"
 echo $(date) >> $HOME/0_data_atualizado.txt
 
 atualizar_scripts
-atualizar_snap
-atualizar_flatpak
 
+if [ -x "$(command -v snap)" ]; then
+  atualizar_snap
+fi
+if [ -x "$(command -v flatpak)" ]; then
+  atualizar_flatpak
+fi
 if [ -x "$(command -v pacman)" ]; then
   atualizar_pacman
 fi
