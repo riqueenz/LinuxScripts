@@ -1,3 +1,20 @@
 #!/bin/bash
 
 . detectar_distro
+. instalar_snap
+
+# instalar dependencias
+if [ $DISTRO == "manjaro" ] || [ $DISTRO == "arch" ]; then
+  instalar tigervnc
+  instalar python-pip
+fi
+
+sudo snap install novnc
+pip install websockify
+pip install numpy
+
+#gerar certificados
+openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
+
+#gerar uma senha
+vncpasswd
