@@ -2,3 +2,4 @@
 instalar podman
 instalar podman-docker
 sudo systemctl enable --now podman
+instalar distrobox
