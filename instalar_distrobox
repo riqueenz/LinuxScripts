@@ -4,7 +4,7 @@ instalar podman-docker
 sudo systemctl enable --now podman
 systemctl --user enable --now podman.socket
 instalar distrobox
-flatpak install flathub --system --assumeyes com.github.marhkb.Pods
+flatpak install flathub --system --assumeyes io.podman_desktop.PodmanDesktop
 echo " "
 echo "Para criar um container:"
 echo "distrobox create --image ubuntu:18.04 --name ubuntu1804"
