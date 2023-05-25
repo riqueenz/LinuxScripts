@@ -141,10 +141,7 @@ git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 chmod +x *
 sudo \cp * /usr/bin
-if [ $DISTRO == "manjaro" ]; then
-  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
-fi
-if [ $DISTRO == "arch" ]; then
+if [ $DISTRO == "manjaro" ] || [ $DISTRO == "arch" ]; then
   sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
 fi
 rm -rf ../LinuxScripts
