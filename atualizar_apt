@@ -1,0 +1,18 @@
+#!/bin/bash 
+apt update
+echo " " >> $HOME/0_data_atualizado.txt
+echo "Gerenciador de pacotes = apt" >> $HOME/0_data_atualizado.txt
+echo "Verificação das atualizações:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
+
+apt upgrade -y
+echo " " >> $HOME/0_data_atualizado.txt
+echo "Instalação das atualizações:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
+
+apt autoclean
+apt clean
+echo " " >> $HOME/0_data_atualizado.txt
+echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
+echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
