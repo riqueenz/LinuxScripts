@@ -1,6 +1,7 @@
 #!/bin/bash
 if ! [ -x "$(command -v snap)" ]; then
   echo 'snapd não instalado.' >&2
+  . detectar_distro
   if [ $DISTRO == "arch" ]; then
     git clone https://aur.archlinux.org/snapd.git
     cd snapd
