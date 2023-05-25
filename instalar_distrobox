@@ -1,3 +1,4 @@
 #!/bin/bash
 instalar podman
 instalar podman-docker
+sudo systemctl enable --now podman
