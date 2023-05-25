@@ -132,44 +132,25 @@ if ! [ -x "$(command -v flatpak)" ]; then
 else
   echo 'flatpak já estava instalado.' >&2
 fi
-if ! [ -x "$(command -v snap)" ]; then
-  echo 'snapd não instalado.' >&2
-  if [ $DISTRO == "arch" ]; then
-    git clone https://aur.archlinux.org/snapd.git
-    cd snapd
-    makepkg -si
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap
-  fi
-  if [ $DISTRO == "centos" ]; then
-    sudo yum install epel-release
-    sudo yum install snapd
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap
-  fi
-  if [ $DISTRO == "debian" ]; then
-    sudo apt update
-    sudo apt install snapd
-  fi
-  if [ $DISTRO == "fedora" ]; then
-    sudo dnf install snapd
-    sudo ln -s /var/lib/snapd/snap /snap
-  fi
-  if [ $DISTRO == "manjaro" ]; then
-    sudo pamac install --no-confirm snapd
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap
-    sudo pamac install --no-confirm libpamac-snap-plugin
-  fi
-  if ! [ -x "$(command -v snap)" ]; then
-    $INSTALAR snapd
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap
-  fi
-else
-  echo 'snapd já estava instalado.' >&2
+
+echo "Copiando scripts"
+echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
+cd $HOME
+rm -rf LinuxScripts
+git clone https://github.com/riqueenz/LinuxScripts.git
+cd LinuxScripts
+chmod +x *
+sudo \cp * /usr/bin
+if [ $DISTRO == "manjaro" ]; then
+  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
 fi
-echo " "
+if [ $DISTRO == "arch" ]; then
+  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+fi
+rm -rf ../LinuxScripts
+cd $HOME
+
+. instalar_snap
 
 # Instalando aplicativos flatpak e snap
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -208,21 +189,4 @@ if ! [ -x "$(command -v desktopeditors)" ]; then
 else
   echo 'onlyoffice já estava instalado.' >&2
 fi
-
-echo "Copiando scripts"
-echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
-cd $HOME
-rm -rf LinuxScripts
-git clone https://github.com/riqueenz/LinuxScripts.git
-cd LinuxScripts
-chmod +x *
-sudo \cp * /usr/bin
-if [ $DISTRO == "manjaro" ]; then
-  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
-fi
-if [ $DISTRO == "arch" ]; then
-  sudo \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
-fi
-rm -rf ../LinuxScripts
-cd $HOME
 

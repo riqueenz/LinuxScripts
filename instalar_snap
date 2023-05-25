@@ -1,0 +1,39 @@
+#!/bin/bash
+if ! [ -x "$(command -v snap)" ]; then
+  echo 'snapd não instalado.' >&2
+  if [ $DISTRO == "arch" ]; then
+    git clone https://aur.archlinux.org/snapd.git
+    cd snapd
+    makepkg -si
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+  fi
+  if [ $DISTRO == "centos" ]; then
+    sudo yum install epel-release
+    sudo yum install snapd
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+  fi
+  if [ $DISTRO == "debian" ]; then
+    sudo apt update
+    sudo apt install snapd
+  fi
+  if [ $DISTRO == "fedora" ]; then
+    sudo dnf install snapd
+    sudo ln -s /var/lib/snapd/snap /snap
+  fi
+  if [ $DISTRO == "manjaro" ]; then
+    sudo pamac install --no-confirm snapd
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+    sudo pamac install --no-confirm libpamac-snap-plugin
+  fi
+  if ! [ -x "$(command -v snap)" ]; then
+    $INSTALAR snapd
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+  fi
+else
+  echo 'snapd já estava instalado.' >&2
+fi
+echo " "
