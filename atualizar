@@ -1,3 +1,2 @@
 #!/bin/bash
-su root
-atualizar_cron
+sudo atualizar_cron
