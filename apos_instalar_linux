@@ -187,3 +187,6 @@ else
   echo 'onlyoffice já estava instalado.' >&2
 fi
 
+instalar virtualbox
+instalar virtualbox-guest-iso
+sudo modprobe vboxdrv
