@@ -16,5 +16,7 @@
 x0vncserver -rfbauth ~/.vnc/passwd &
 #Rodar usando novnc snap
 websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 26901 localhost:5900
+ip route
+
 #Rodar usando novnc do respositório do ubuntu
 #websockify -D --web=/usr/share/novnc/ --cert=/home/ubuntu/novnc.pem 6080 localhost:5900
