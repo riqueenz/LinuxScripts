@@ -22,5 +22,11 @@ fi
 if [ -x "$(command -v apt)" ]; then
   atualizar_apt
 fi
+if [ -x "$(command -v dnf)" ]; then
+  atualizar_dnf
+fi
+if [ -x "$(command -v apk)" ]; then
+  atualizar_apk
+fi
 
 cat $HOME/0_data_atualizado.txt
