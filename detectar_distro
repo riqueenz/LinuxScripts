@@ -7,7 +7,6 @@ if ! [ -x "$(command -v apt-get)" ]; then
   :
 else
   INSTALAR="sudo apt-get install -y"
-  echo 'O gerenciador de pacotes apt-get está instalado' >&2
 fi
 if ! [ -x "$(command -v apt)" ]; then
   :
