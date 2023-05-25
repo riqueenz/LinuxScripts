@@ -18,6 +18,7 @@ cd $HOME
 rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
+chmod +x *
 \cp * /usr/bin
 if [ $DISTRO == "manjaro" ]; then
   echo "Atualizando configuração do faillock"
