@@ -116,6 +116,12 @@ if ! [ -x "$(command -v git)" ]; then
 else
   echo 'git já estava instalado.' >&2
 fi
+if ! [ -x "$(command -v gh)" ]; then
+  $INSTALAR gh
+  $INSTALAR github-cli
+else
+  echo 'github-cli já estava instalado.' >&2
+fi
 if ! [ -x "$(command -v curl)" ]; then
   $INSTALAR curl
 else
@@ -187,9 +193,14 @@ else
   echo 'onlyoffice já estava instalado.' >&2
 fi
 if ! [ -x "$(command -v virtualbox)" ]; then
-  instalar virtualbox
-  instalar virtualbox-guest-iso
-  sudo modprobe vboxdrv
+  instalar_virtualbox
 else
-  echo 'onlyoffice já estava instalado.' >&2
+  echo 'virtualbox já estava instalado.' >&2
 fi
+if ! [ -x "$(command -v distrobox)" ]; then
+  instalar_distrobox
+else
+  echo 'distrobox já estava instalado.' >&2
+fi
+echo " "
+echo "Fim do script!"
