@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Detectar distro
+DISTRO="Desconhecido"
+. /etc/os-release
+echo " "
+echo "Distribuição linux detectada:"
+DISTRO=$ID
+echo "$DISTRO"
+echo " "
