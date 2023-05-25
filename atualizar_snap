@@ -1,5 +1,6 @@
 #!/bin/bash 
 snap refresh
+echo "snap refresh"
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Snap atualizado em:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
