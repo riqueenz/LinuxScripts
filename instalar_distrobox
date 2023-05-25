@@ -1,0 +1,3 @@
+#!/bin/bash
+instalar podman
+instalar podman-docker
