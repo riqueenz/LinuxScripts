@@ -23,4 +23,3 @@ echo "dnf clean oldmaya"
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
-echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
