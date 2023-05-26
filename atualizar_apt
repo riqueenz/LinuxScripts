@@ -13,14 +13,13 @@ echo "Instalação das atualizações:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 
 apt clean
-echo "apt clean"
-apt autoremove
-echo "apt autoremove"
-apt autoclean
-echo "apt autoclean"
-apt autoremove --purge
-echo "apt autoremove --purge"
+echo "apt clean -y"
+apt autoremove -y
+echo "apt autoremove -y"
+apt autoclean -y
+echo "apt autoclean -y"
+apt autoremove --purge -y
+echo "apt autoremove --purge -y"
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
-echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
