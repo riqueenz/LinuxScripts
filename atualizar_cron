@@ -1,4 +1,6 @@
 #!/bin/bash
+flatpak install flathub --system --assumeyes org.flameshot.Flameshot
+
 . detectar_distro
 
 echo "Iniciando atualização"
