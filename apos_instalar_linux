@@ -204,5 +204,8 @@ if ! [ -x "$(command -v distrobox)" ]; then
 else
   echo 'distrobox já estava instalado.' >&2
 fi
+
+#Pasta de backup do sistema
+mkdir $HOME/Documentos/Zistema
 echo " "
 echo "Fim do script!"
