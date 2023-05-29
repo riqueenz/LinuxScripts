@@ -157,6 +157,7 @@ cd $HOME
 
 # Instalando aplicativos flatpak e snap
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+systemctl enable --now snapd.apparmor # Habilitar serviço snap app apparmor
 flatpak install flathub --system --assumeyes com.google.Chrome
 snap install freecad-mechanical
 flatpak install flathub --system --assumeyes com.anydesk.Anydesk
