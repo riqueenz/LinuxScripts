@@ -1,0 +1,9 @@
+#!/bin/bash 
+. detectar_distro
+if [ $DISTRO == "ubuntu" ]; then
+  atualizar
+  sudo apt install ubuntu-release-upgrader-core -y
+  do-release-upgrade
+  atualizar
+  cat /etc/os-release
+fi
