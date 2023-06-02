@@ -1,7 +1,7 @@
 #!/bin/bash 
+echo "snap refresh"
 snap refresh
 systemctl enable --now snapd.apparmor
-echo "snap refresh"
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Snap atualizado em:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
