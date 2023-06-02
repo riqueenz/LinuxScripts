@@ -7,3 +7,10 @@ if [ $DISTRO == "ubuntu" ]; then
   atualizar
   cat /etc/os-release
 fi
+if [ $DISTRO == "debian" ]; then
+  atualizar
+  #atualizar /etc/apt/sources.list
+  sudo apt dist-upgrade
+  atualizar
+  cat /etc/os-release
+fi
