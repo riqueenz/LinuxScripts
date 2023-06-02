@@ -3,14 +3,24 @@
 if [ $DISTRO == "ubuntu" ]; then
   atualizar
   sudo apt install ubuntu-release-upgrader-core -y
-  do-release-upgrade
+  sudo do-release-upgrade
   atualizar
   cat /etc/os-release
 fi
 if [ $DISTRO == "debian" ]; then
-  atualizar
+  #atualizar
   #atualizar /etc/apt/sources.list
-  sudo apt dist-upgrade
+  echo "edite o arquivo /etc/apt/sources.list"
+  sudo apt update
+  sudo apt dist-upgrade -y
   atualizar
+  cat /etc/os-release
+fi
+if [ $DISTRO == "fedora" ]; then
+  atualizar
+  sudo dnf upgrade --refresh -y
+  sudo dnf install dnf-plugin-system-upgrade -y
+  sudo dnf system-upgrade download --releasever=XX
+  sudo dnf system-upgrade reboot
   cat /etc/os-release
 fi
