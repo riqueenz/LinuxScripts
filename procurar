@@ -1,0 +1,9 @@
+#!/bin/bash 
+# exemplo de uso dos parâmetros de entrada 
+echo "Procurando pacote: $1"
+
+. detectar_distro
+
+# Procurar pacote usando gerenciador de pacotes da distro
+echo$($PROCURAR $1)
+$PROCURAR $1

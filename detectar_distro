@@ -2,17 +2,20 @@
 
 # Detectar o gerenciador de pacotes da distro
 INSTALAR="echo"
+PROCURAR="comando procurar não implementado:"
 DISTRO="Desconhecido"
 if ! [ -x "$(command -v apt-get)" ]; then
   :
 else
   INSTALAR="sudo apt-get install -y"
+  PROCURAR="apt-get search"
 fi
 if ! [ -x "$(command -v apt)" ]; then
   :
 else
   INSTALAR="sudo apt install -y"
   echo 'O gerenciador de pacotes apt está instalado' >&2
+  PROCURAR="apt search"
 fi
 if ! [ -x "$(command -v nala)" ]; then
   :
@@ -25,12 +28,14 @@ if ! [ -x "$(command -v pacman)" ]; then
 else
   echo 'O gerenciador de pacotes pacman está instalado' >&2
   INSTALAR="sudo pacman -S --no-confirm"
+  PROCURAR="pacman -Ss"
 fi
 if ! [ -x "$(command -v pamac)" ]; then
   :
 else
   echo 'O gerenciador de pacotes pamac está instalado' >&2
   INSTALAR="sudo pamac install --no-confirm"
+  PROCURAR="pamac search"
 fi
 if ! [ -x "$(command -v dnf)" ]; then
   :
