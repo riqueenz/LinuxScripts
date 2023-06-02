@@ -1,23 +1,23 @@
 #!/bin/bash 
-apk update
 echo "apk update"
+apk update
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Gerenciador de pacotes = apk" >> $HOME/0_data_atualizado.txt
 echo "Verificação das atualizações:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 
-apk upgrade
 echo "apk upgrade"
+apk upgrade
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Instalação das atualizações:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 
-apk cache clean
 echo "apk cache clean"
-apk autoremove
+apk cache clean
 echo "apk autoremove"
-apk fix
+apk autoremove
 echo "apk fix"
+apk fix
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
