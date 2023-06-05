@@ -1,6 +1,4 @@
 59 03 * * * atualizar_cron
-00 07 * * * atualizar_cron
-45 07 * * * atualizar_cron
-45 11 * * * atualizar_cron
+40 11 * * * atualizar_cron
 05 18 * * * atualizar_cron
 47 21 * * * atualizar_cron
