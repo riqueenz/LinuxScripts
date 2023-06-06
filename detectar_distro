@@ -27,7 +27,7 @@ if ! [ -x "$(command -v pacman)" ]; then
   :
 else
   echo 'O gerenciador de pacotes pacman está instalado' >&2
-  INSTALAR="sudo pacman -S --no-confirm"
+  INSTALAR="sudo pacman -S --noconfirm"
   PROCURAR="pacman -Ss"
 fi
 if ! [ -x "$(command -v pamac)" ]; then
