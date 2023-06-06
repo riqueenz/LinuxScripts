@@ -4,3 +4,8 @@ flatpak update -y
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Flatpak atualizado em:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
+echo "flatpak uninstall --unused"
+flatpak uninstall --unused
+echo " " >> $HOME/0_data_atualizado.txt
+echo "Limpeza dos runtimes do Flatpak:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
