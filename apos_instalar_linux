@@ -164,6 +164,7 @@ flatpak install flathub --system --assumeyes com.anydesk.Anydesk
 flatpak install flathub --system --assumeyes eu.scarpetta.PDFMixTool
 flatpak install flathub --system --assumeyes io.github.shiftey.Desktop # GitHub Desktop
 flatpak install flathub --system --assumeyes org.flameshot.Flameshot
+flatpak install flathub --system --assumeyes org.gabmus.whatip
 if ! [ -x "$(command -v openshot)" ]; then
   flatpak install flathub --system --assumeyes org.openshot.OpenShot
 else
