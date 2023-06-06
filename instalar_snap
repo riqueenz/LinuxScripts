@@ -37,4 +37,5 @@ if ! [ -x "$(command -v snap)" ]; then
 else
   echo 'snapd já estava instalado.' >&2
 fi
+sudo systemctl enable --now snapd.apparmor
 echo " "
