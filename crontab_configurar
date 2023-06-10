@@ -1,2 +1,6 @@
 #!/bin/bash
 crontab /usr/bin/crontab_tabela
+sudo systemctl enable cron
+sudo systemctl start cron
+sudo systemctl enable cronie
+sudo systemctl start cronie
