@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -x "$(command -v podman)" ]; then
+  podman system df -v
+else
+  docker system df -v
+fi
