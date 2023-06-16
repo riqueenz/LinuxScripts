@@ -2,7 +2,7 @@
 . detectar_distro
 
 echo "Atualizando scripts"
-echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
+echo "Scripts atualizados em:" >> $HOME/0_data_atualizado.txt
 cd $HOME
 rm -rf LinuxScripts
 git clone https://github.com/riqueenz/LinuxScripts.git
@@ -11,7 +11,7 @@ chmod +x *
 \cp * /usr/bin
 if [ $DISTRO == "manjaro" ] || [ $DISTRO == "arch" ]; then
   echo "Atualizando configuração do faillock"
-  echo "Configuração do faillock atualizado em:" > $HOME/0_data_atualizado.txt
+  echo "Configuração do faillock atualizado em:" >> $HOME/0_data_atualizado.txt
   \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
 fi
 rm -rf ../LinuxScripts
@@ -19,6 +19,6 @@ cd $HOME
 echo $(date) >> $HOME/0_data_atualizado.txt
 
 echo "Atualizando configuração do Crontab"
-echo "Configuração do crontab atualizado em:" > $HOME/0_data_atualizado.txt
+echo "Configuração do crontab atualizado em:" >> $HOME/0_data_atualizado.txt
 crontab_configurar
 echo $(date) >> $HOME/0_data_atualizado.txt
