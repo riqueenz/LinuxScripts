@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $HOME/Downloads
+sudo mkdir "Orçamentos"
+sudo ln -s $HOME/Documentos/Zistema/sistemas/Hidraumak/arqs "Orçamentos"
