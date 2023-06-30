@@ -1,4 +1,6 @@
 #!/bin/bash
 cd $HOME/Downloads/Orçamentos/Orçamentos
-rm Or*
+rm Orçamento*
+cd $HOME/Downloads/Orçamentos/arqs
+rm Orçamento*
 clear
