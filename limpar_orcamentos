@@ -2,7 +2,9 @@
 cd $HOME/Downloads/Orçamentos/Orçamentos
 rm Orçamento*
 rm Cotação*
+rm "Ordem de Compra"*
 cd $HOME/Downloads/Orçamentos/arqs
 rm Orçamento*
 rm Cotação*
+rm "Ordem de Compra"*
 clear
