@@ -197,6 +197,11 @@ if ! [ -x "$(command -v desktopeditors)" ]; then
 else
   echo 'onlyoffice já estava instalado.' >&2
 fi
+if ! [ -x "$(command -v openscad)" ]; then
+  flatpak install flathub --system --assumeyes org.openscad.OpenSCAD
+else
+  echo 'openscad já estava instalado.' >&2
+fi
 if ! [ -x "$(command -v virtualbox)" ]; then
   instalar_virtualbox
 else
