@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p $HOME/snap/freecad/common/Mod
 cd $HOME/snap/freecad/common/Mod
 git clone https://github.com/kbwbe/A2plus.git
 git clone https://github.com/shaise/FreeCAD_SheetMetal.git
