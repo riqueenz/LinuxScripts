@@ -7,5 +7,6 @@ for PASTA in "${LISTA_DE_PASTAS_SOMENTE_LEITURA[@]}"; do
 done
 for PASTA in "${LISTA_DE_PASTAS_LEITURA_E_ESCRITA[@]}"; do
   mkdir -p $PASTA_DE_MONTAGEM/$PASTA
+  chmod 777 $PASTA_DE_MONTAGEM/$PASTA
   sudo mount -t cifs -o username=$USUARIO,password=$SENHA,uid=1000,gid=1000,forceuid,forcegid, //$IP_DO_SERVIDOR/$PASTA$/ $PASTA_DE_MONTAGEM/$PASTA
 done
