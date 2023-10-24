@@ -1,6 +1,6 @@
 #!/bin/bash
-. ./autenticar_usuario_na_rede
-. ./parametros_das_pastas_da_rede
+. autenticar_usuario_na_rede
+. parametros_das_pastas_da_rede
 for PASTA in "${LISTA_DE_PASTAS_SOMENTE_LEITURA[@]}"; do
   mkdir -p $PASTA_DE_MONTAGEM/$PASTA
   sudo mount -t cifs -o username=$USUARIO,password=$SENHA,uid=1,gid=1,forceuid,forcegid, //$IP_DO_SERVIDOR/$PASTA$/ $PASTA_DE_MONTAGEM/$PASTA

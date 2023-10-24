@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./autenticar_usuario_na_rede
+. autenticar_usuario_na_rede
 ARQUIVO_DE_PARAMETROS=$PASTA_DE_CREDENCIAIS/parametros
 mkdir -p $PASTA_DE_CREDENCIAIS
 if [[ $UID -ne 0 && ! -e $ARQUIVO_DE_PARAMETROS ]]; then
