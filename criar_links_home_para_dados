@@ -1,0 +1,13 @@
+#!/bin/bash
+rm -rf $HOME/Música
+ln -s /mnt/Dados/Mídias/Músicas $HOME/Música
+rm -rf $HOME/Documentos
+ln -s /mnt/Dados/Mídias/Documentos $HOME/Documentos
+rm -rf $HOME/Downloads
+ln -s /mnt/Dados/Mídias/Downloads $HOME/Downloads
+rm -rf $HOME/Imagens
+ln -s /mnt/Dados/Mídias/Imagens $HOME/Imagens
+rm -rf $HOME/Vídeos
+ln -s /mnt/Dados/Mídias/Vídeos $HOME/Vídeos
+rm -rf "$HOME/VirtualBox VMs"
+ln -s "/mnt/Dados/Máquinas Virtuais/VirtualBox VMs" "$HOME/VirtualBox VMs"
