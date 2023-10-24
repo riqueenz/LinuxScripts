@@ -6,10 +6,12 @@ echo $USUARIO >> $PASTA_DE_MONTAGEM/hora_de_montagem_das_pastas_da_rede.txt
 echo $IP_DO_SERVIDOR >> $PASTA_DE_MONTAGEM/hora_de_montagem_das_pastas_da_rede.txt
 for PASTA in "${LISTA_DE_PASTAS_SOMENTE_LEITURA[@]}"; do
   mkdir -p $PASTA_DE_MONTAGEM/$PASTA
+  echo $PASTA >> $PASTA_DE_MONTAGEM/hora_de_montagem_das_pastas_da_rede.txt
   sudo mount -t cifs -o username=$USUARIO,password=$SENHA,uid=1,gid=1,forceuid,forcegid, //$IP_DO_SERVIDOR/$PASTA$/ $PASTA_DE_MONTAGEM/$PASTA
 done
 for PASTA in "${LISTA_DE_PASTAS_LEITURA_E_ESCRITA[@]}"; do
   mkdir -p $PASTA_DE_MONTAGEM/$PASTA
   chmod 777 $PASTA_DE_MONTAGEM/$PASTA
+  echo $PASTA >> $PASTA_DE_MONTAGEM/hora_de_montagem_das_pastas_da_rede.txt
   sudo mount -t cifs -o username=$USUARIO,password=$SENHA,uid=1000,gid=1000,forceuid,forcegid, //$IP_DO_SERVIDOR/$PASTA$/ $PASTA_DE_MONTAGEM/$PASTA
 done
