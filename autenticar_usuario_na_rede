@@ -1,0 +1,16 @@
+#!/bin/bash
+PASTA_DE_CREDENCIAIS=$HOME/.config/Credenciais_da_rede
+ARQUIVO_DE_CREDENCIAIS=$PASTA_DE_CREDENCIAIS/rede
+mkdir -p $PASTA_DE_CREDENCIAIS
+if [[ $UID -ne 0 && ! -e $ARQUIVO_DE_CREDENCIAIS ]]; then
+    echo "Arquivo de credenciais não encontrado"
+    echo "Digite o usuário para conectar a rede:"
+    read USUARIO
+    echo "Digite a senha para conectar a rede:"
+    read SENHA
+    echo '#!/bin/bash' > $ARQUIVO_DE_CREDENCIAIS
+    echo "USUARIO=$USUARIO" >> $ARQUIVO_DE_CREDENCIAIS
+    echo "SENHA=$SENHA" >> $ARQUIVO_DE_CREDENCIAIS
+    echo "Arquivo de credenciais criado!"
+fi
+. $ARQUIVO_DE_CREDENCIAIS

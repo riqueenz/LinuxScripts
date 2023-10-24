@@ -1,0 +1,3 @@
+#!/bin/bash
+. ./autenticar_usuario_na_rede
+rm $ARQUIVO_DE_CREDENCIAIS

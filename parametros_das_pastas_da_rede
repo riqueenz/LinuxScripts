@@ -1,0 +1,33 @@
+#!/bin/bash
+. ./autenticar_usuario_na_rede
+ARQUIVO_DE_PARAMETROS=$PASTA_DE_CREDENCIAIS/parametros
+mkdir -p $PASTA_DE_CREDENCIAIS
+if [[ $UID -ne 0 && ! -e $ARQUIVO_DE_PARAMETROS ]]; then
+    echo "Arquivo de parâmetros não encontrado"
+    echo " "
+    echo "Digite a pasta onde os arquivos da rede serão montados"
+    echo 'Exemplo: $HOME/Documentos/Arquivos_da_rede ou /rede'
+    read PASTA_DE_MONTAGEM
+    echo " "
+    echo "Digite o IP do servidor:"
+    echo "Exemplo: 192.168.xxx.xxx"
+    read IP_DO_SERVIDOR
+    echo " "
+    echo "Digite o domínio da rede:"
+    read DOMINIO
+    echo " "
+    echo "Digite a lista de pastas somente leitura:"
+    echo 'Exemplo:("pasta1" "pasta2" "pasta3")'
+    read LISTA_DE_PASTAS_SOMENTE_LEITURA
+    echo "Digite a lista de pastas com escrita permitida:"
+    echo 'Exemplo:("pasta1" "pasta2" "pasta3")'
+    read LISTA_DE_PASTAS_LEITURA_E_ESCRITA
+    echo '#!/bin/bash' > $ARQUIVO_DE_PARAMETROS
+    echo "PASTA_DE_MONTAGEM=$PASTA_DE_MONTAGEM" >> $ARQUIVO_DE_PARAMETROS
+    echo "IP_DO_SERVIDOR=$IP_DO_SERVIDOR" >> $ARQUIVO_DE_PARAMETROS
+    echo "DOMINIO=$DOMINIO" >> $ARQUIVO_DE_PARAMETROS
+    echo "LISTA_DE_PASTAS_SOMENTE_LEITURA=$LISTA_DE_PASTAS_SOMENTE_LEITURA" >> $ARQUIVO_DE_PARAMETROS
+    echo "LISTA_DE_PASTAS_LEITURA_E_ESCRITA=$LISTA_DE_PASTAS_LEITURA_E_ESCRITA" >> $ARQUIVO_DE_PARAMETROS
+    echo "Arquivo de parâmetros criado!"
+fi
+. $ARQUIVO_DE_PARAMETROS
