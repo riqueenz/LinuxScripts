@@ -2,4 +2,3 @@
 40 11 * * * atualizar_cron
 05 18 * * * atualizar_cron
 47 21 * * * atualizar_cron
-@reboot montar_pastas_da_rede
