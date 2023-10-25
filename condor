@@ -1,0 +1,32 @@
+#!/bin/bash
+if ! command -v ser2net
+then
+    echo "Instalando ser2net"
+    instalar ser2net
+fi
+if ! command -v socat
+then
+    echo "Instalando socat"
+    instalar socat
+fi
+if ! command -v xclip
+then
+    echo "Instalando xclip"
+    instalar xclip
+fi
+if ! command -v wine
+then
+    echo "Instalando wine"
+    instalar wine
+    instalar wine-mono
+fi
+clear
+sleep 5
+PASTA_DO_CONDOR=$(pwd)
+PREFIXO_DO_WINE="$HOME/.wine"
+clear
+echo "Configurando portas seriais"
+echo "111-YHL0-53NI" | xclip -selection clipboard
+#2000:raw:600:/dev/ttyS1:115200 8DATABITS NONE 1STOPBIT
+socat PTY,link=$PREFIXO_DO_WINE/dosdevices/com6 PTY,link=$PREFIXO_DO_WINE/dosdevices/com7 && wine $PASTA_DO_CONDOR/Condor.exe && wine $PASTA_DO_CONDOR/XCSoar.exe
+#rm -rf $PREFIXO_DO_WINE
