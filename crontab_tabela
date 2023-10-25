@@ -1,6 +1,5 @@
 @reboot sleep 60 && montar_pastas_da_rede
 59 03 * * * atualizar_cron
-45 07 * * * montar_pastas_da_rede
 40 11 * * * atualizar_cron
 05 18 * * * atualizar_cron
 47 21 * * * atualizar_cron
