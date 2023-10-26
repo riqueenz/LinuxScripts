@@ -1,4 +1,5 @@
 #!/bin/bash
+'''
 if ! command -v ser2net
 then
     echo "Instalando ser2net"
@@ -24,10 +25,13 @@ then
     instalar wine-mono
     sleep 3
 fi
+'''
 clear
 echo "Executando script!"
-PASTA_DO_CONDOR="$HOME/Condor"
-PREFIXO_DO_WINE="$HOME/Condor/wineprefix"
+#PASTA_DO_CONDOR="$HOME/Condor"
+#PREFIXO_DO_WINE="$HOME/Condor/wineprefix"
+PASTA_DO_CONDOR="$HOME/Downloads"
+PREFIXO_DO_WINE="$HOME/.wine32"
 #WINEPREFIX=$PREFIXO_DO_WINE wine regedit
 wineserver -k
 WINEPREFIX=$PREFIXO_DO_WINE winecfg
@@ -38,6 +42,7 @@ echo "Configurando portas seriais"
 #echo "2000:raw:600:/tmp/ttyV0:115200 8DATABITS NONE 1STOPBIT" > /etc/ser2net.conf
 #socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=/tmp/ttyV0 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
 #socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
-sudo socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 tcp:127.0.0.1:4353 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+#sudo socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 tcp:127.0.0.1:4353 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
 #socat PTY,link=$PREFIXO_DO_WINE/dosdevices/com6 PTY,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
-rm -rf $PREFIXO_DO_WINE
+#rm -rf $PREFIXO_DO_WINE
