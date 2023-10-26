@@ -28,7 +28,7 @@ clear
 echo "Executando script!"
 PASTA_DO_CONDOR="$HOME/Condor"
 PREFIXO_DO_WINE="$HOME/Condor/wineprefix"
-WINEPREFIX=$PREFIXO_DO_WINE wine regedit
+#WINEPREFIX=$PREFIXO_DO_WINE wine regedit
 wineserver -k
 WINEPREFIX=$PREFIXO_DO_WINE winecfg
 clear
