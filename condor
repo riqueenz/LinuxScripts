@@ -37,6 +37,7 @@ echo "111-YHL0-53NI" | xclip -selection clipboard
 echo "Configurando portas seriais"
 #echo "2000:raw:600:/tmp/ttyV0:115200 8DATABITS NONE 1STOPBIT" > /etc/ser2net.conf
 #socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=/tmp/ttyV0 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
-socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+#socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+sudo socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 tcp:127.0.0.1:4353 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
 #socat PTY,link=$PREFIXO_DO_WINE/dosdevices/com6 PTY,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
 rm -rf $PREFIXO_DO_WINE
