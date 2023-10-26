@@ -3,30 +3,40 @@ if ! command -v ser2net
 then
     echo "Instalando ser2net"
     instalar ser2net
+    sleep 3
 fi
 if ! command -v socat
 then
     echo "Instalando socat"
     instalar socat
+    sleep 3
 fi
 if ! command -v xclip
 then
     echo "Instalando xclip"
     instalar xclip
+    sleep 3
 fi
 if ! command -v wine
 then
     echo "Instalando wine"
     instalar wine
     instalar wine-mono
+    sleep 3
 fi
 clear
-sleep 5
-PASTA_DO_CONDOR=$(pwd)
-PREFIXO_DO_WINE="$HOME/.wine"
+echo "Executando script!"
+PASTA_DO_CONDOR="$HOME/Condor"
+PREFIXO_DO_WINE="$HOME/Condor/wineprefix"
+WINEPREFIX=$PREFIXO_DO_WINE wine regedit
+wineserver -k
+WINEPREFIX=$PREFIXO_DO_WINE winecfg
 clear
-echo "Configurando portas seriais"
+echo "Copiando serial para a área de transferência"
 echo "111-YHL0-53NI" | xclip -selection clipboard
-#2000:raw:600:/dev/ttyS1:115200 8DATABITS NONE 1STOPBIT
-socat PTY,link=$PREFIXO_DO_WINE/dosdevices/com6 PTY,link=$PREFIXO_DO_WINE/dosdevices/com7 && wine $PASTA_DO_CONDOR/Condor.exe && wine $PASTA_DO_CONDOR/XCSoar.exe
-#rm -rf $PREFIXO_DO_WINE
+echo "Configurando portas seriais"
+#echo "2000:raw:600:/tmp/ttyV0:115200 8DATABITS NONE 1STOPBIT" > /etc/ser2net.conf
+#socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=/tmp/ttyV0 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+socat -d -d pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com6 pty,rawer,echo=0,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+#socat PTY,link=$PREFIXO_DO_WINE/dosdevices/com6 PTY,link=$PREFIXO_DO_WINE/dosdevices/com7 & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/Condor.exe & WINEPREFIX=$PREFIXO_DO_WINE wine $PASTA_DO_CONDOR/XCSoar.exe
+rm -rf $PREFIXO_DO_WINE
