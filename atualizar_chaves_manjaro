@@ -1,0 +1,26 @@
+#!/bin/bash 
+echo "Executar script como root ou sudo"
+echo "Removendo todas as chaves"
+echo "rm -rf /etc/pacman.d/gnupg"
+rm -rf /etc/pacman.d/gnupg
+echo " "
+echo "Reiniciando arquivos e pastas das chaves"
+echo "pacman-key --init"
+pacman-key --init
+echo " "
+echo "Repopulando as chaves com os pacotes"
+echo "pacman-key --populate archlinux manjaro"
+pacman-key --populate archlinux manjaro
+echo " "
+echo "Reinstalando os ultimos pacotes de chaveamento"
+echo "pacman -Sy gnupg archlinux-keyring manjaro-keyring --noconfirm"
+pacman -Sy gnupg archlinux-keyring manjaro-keyring --noconfirm
+echo " "
+echo "Atualizando as chaves"
+echo "pacman-key --refresh-keys"
+pacman-key --refresh-keys
+echo " "
+echo "Limpando cache"
+echo "pacman -Sc"
+pacman -Sc
+atualizar_cron
