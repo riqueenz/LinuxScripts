@@ -16,6 +16,8 @@ if [ -x $(command -v python) ]; then
   PYTHON=python
 fi
 
+$PYTHON -m pip install --upgrade pip
+
 #rodar vnc
 x0vncserver -rfbauth ~/.vnc/passwd &
 
