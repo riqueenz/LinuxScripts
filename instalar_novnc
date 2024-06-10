@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. detectar_distro
-
 #Criar pasta para configuração
 PASTA_AMBIENTE="$HOME/.venv/novnc"
 
