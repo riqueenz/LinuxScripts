@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . detectar_distro
-. instalar_snap
 
 #Criar pasta para configuração
 PASTA_AMBIENTE="$HOME/.venv/novnc"
