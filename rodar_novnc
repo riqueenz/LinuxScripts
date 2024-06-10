@@ -1,22 +1,19 @@
 #!/bin/bash
 
-#sudo apt -y install novnc python3-websockify python3-numpy
-#pamac install python-pip
-#pip install novnc
-#pip install websockify
-#pip install numpy
-
-#gerar certificados
-#openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
-
-#pamac install tigervnc
-#vncpasswd
+PASTA_AMBIENTE="$HOME/.venv/novnc"
+PASTA_HTML_NOVNC="$PASTA_AMBIENTE/novnc-git/noVNC"
+PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
+source "$PASTA_AMBIENTE/bin/activate"
 
 #rodar vnc
 x0vncserver -rfbauth ~/.vnc/passwd &
-#Rodar usando novnc snap
-websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 26901 localhost:5900
+
+#Rodar usando novnc do ambiente virtual python
+python -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="PASTA_CERTIFICADO" 26901 localhost:5900
+
 ip route
 
+#Rodar usando novnc snap
+#websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 26901 localhost:5900
 #Rodar usando novnc do respositório do ubuntu
 #websockify -D --web=/usr/share/novnc/ --cert=/home/ubuntu/novnc.pem 6080 localhost:5900

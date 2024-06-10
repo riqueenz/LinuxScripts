@@ -3,18 +3,41 @@
 . detectar_distro
 . instalar_snap
 
+#Criar pasta para configuração
+PASTA_AMBIENTE="$HOME/.venv/novnc"
+
 # instalar dependencias
-if [ $DISTRO == "manjaro" ] || [ $DISTRO == "arch" ]; then
-  instalar tigervnc
-  instalar python-pip
+instalar openssl
+instalar python
+instalar python3
+instalar tigervnc-common
+instalar tigervnc
+instalar python3-pip
+instalar python-pip
+instalar git
+
+#Criar o ambiente virtual Python
+if [ -x $(command -v python3) ]; then
+  echo "Comando python3 encontrado!"
+  echo "Instalando python-is-python3"
+  instalar python3-venv
+  instalar python-is-python3
 fi
 
-sudo snap install novnc
-pip install websockify
-pip install numpy
+echo "Criando abiente virtual python em:"
+echo "$PASTA_AMBIENTE"
+python -m venv $PASTA_AMBIENTE
+source "$PASTA_AMBIENTE/bin/activate"
+python -m pip install websockify
+python -m pip install numpy
+python -m pip install novnc
+mkdir - p "$PASTA_AMBIENTE/novnc-git"
+cd "$PASTA_AMBIENTE/novnc-git"
+git clone https://github.com/novnc/noVNC.git
+#git clone -b v1.4.0 https://github.com/novnc/noVNC.git
 
 #gerar certificados
-openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
+openssl req -x509 -nodes -newkey rsa:3072 -keyout "$PASTA_AMBIENTE/novnc.pem" -out "$PASTA_AMBIENTE/novnc.pem" -days 3650
 
 #gerar uma senha
 vncpasswd
