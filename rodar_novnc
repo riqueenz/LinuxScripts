@@ -6,12 +6,24 @@ PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
 PORTA_NOVNC=26901
 source "$PASTA_AMBIENTE/bin/activate"
 
+#Configurar o python
+if [ -x $(command -v python3) ]; then
+  echo "Comando python3 encontrado!"
+  PYTHON=python3
+fi
+if [ -x $(command -v python) ]; then
+  echo "Comando python encontrado!"
+  PYTHON=python
+fi
+
 #rodar vnc
 x0vncserver -rfbauth ~/.vnc/passwd &
 
 #Rodar usando novnc do ambiente virtual python
-python -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
+$PYTHON -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
 
+echo ""
+echo "Endereço para acessar essa máquina:"
 echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
 
 #Rodar usando novnc snap

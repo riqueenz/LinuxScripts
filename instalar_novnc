@@ -12,25 +12,29 @@ instalar python
 instalar python3
 instalar tigervnc-common
 instalar tigervnc
-instalar python3-pip
-instalar python-pip
 instalar git
 
-#Criar o ambiente virtual Python
+#Configurar o python
 if [ -x $(command -v python3) ]; then
   echo "Comando python3 encontrado!"
-  echo "Instalando python-is-python3"
   instalar python3-venv
-  instalar python-is-python3
+  instalar python3-pip
+  PYTHON=python3
+fi
+if [ -x $(command -v python) ]; then
+  echo "Comando python encontrado!"
+  PYTHON=python
+  instalar python-pip
 fi
 
+#Criar o ambiente virtual python
 echo "Criando abiente virtual python em:"
 echo "$PASTA_AMBIENTE"
-python -m venv $PASTA_AMBIENTE
+$PYTHON -m venv $PASTA_AMBIENTE
 source "$PASTA_AMBIENTE/bin/activate"
-python -m pip install websockify
-python -m pip install numpy
-python -m pip install novnc
+$PYTHON -m pip install websockify
+$PYTHON -m pip install numpy
+$PYTHON -m pip install novnc
 mkdir - p "$PASTA_AMBIENTE/novnc-git"
 cd "$PASTA_AMBIENTE/novnc-git"
 git clone https://github.com/novnc/noVNC.git
