@@ -3,15 +3,16 @@
 PASTA_AMBIENTE="$HOME/.venv/novnc"
 PASTA_HTML_NOVNC="$PASTA_AMBIENTE/novnc-git/noVNC"
 PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
+PORTA_NOVNC=26901
 source "$PASTA_AMBIENTE/bin/activate"
 
 #rodar vnc
 x0vncserver -rfbauth ~/.vnc/passwd &
 
 #Rodar usando novnc do ambiente virtual python
-python -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="PASTA_CERTIFICADO" 26901 localhost:5900
+python -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
 
-ip route | awk '{print $9}' | head -n 1 
+echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
 
 #Rodar usando novnc snap
 #websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 26901 localhost:5900
