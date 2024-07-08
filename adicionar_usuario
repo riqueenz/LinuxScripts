@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Qual é o nome do novo usuário?"
+read USUARIO
+echo "useradd -m $USUARIO"
+useradd -m USUARIO
