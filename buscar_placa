@@ -20,11 +20,11 @@ fi
 . $ARQUIVO_TOKEN
 echo "Buscando placa $PLACA"
 mkdir -p "$PASTA_SALVAR_PLACA"
+if [[ $UID -ne 0 && -e "$PASTA_SALVAR_PLACA/$PLACA.json" ]]; then
+    echo "Placa $PLACA ainda já consultada anteriormente"
+fi
 if [[ $UID -ne 0 && ! -e "$PASTA_SALVAR_PLACA/$PLACA.json" ]]; then
     echo "Placa $PLACA ainda não consultada"
     wget -O "$PASTA_SALVAR_PLACA/$PLACA.json" https://wdapi2.com.br/consulta/$PLACA/$TOKEN
-fi
-if [[ $UID -ne 0 && -e "$PASTA_SALVAR_PLACA/$PLACA.json" ]]; then
-    echo "Placa $PLACA ainda já consultada anteriormente"
 fi
 firefox "$PASTA_SALVAR_PLACA/$PLACA.json"
