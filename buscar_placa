@@ -1,0 +1,30 @@
+#!/bin/bash 
+PLACA=`echo $1 | tr -d "-" | tr 'a-z' 'A-Z'`
+PASTA_TOKEN="$HOME/.config/Credenciais_busca_placa"
+ARQUIVO_TOKEN="$PASTA_TOKEN/token"
+if [[ $UID -ne 0 && ! -e $ARQUIVO_TOKEN ]]; then
+	mkdir -p $PASTA_TOKEN
+    echo "Arquivo do token não encontrado"
+    echo " "
+    echo "Digite seu token"
+    read TOKEN
+    echo "Pasta onde as placas serão salvas"
+    echo "Exemplo:"
+    echo '"$HOME/Documentos/GitHub/PlacasJSON"'
+    read PASTA_SALVAR_PLACA
+    echo '#!/bin/bash' > $ARQUIVO_TOKEN
+    echo "TOKEN=$TOKEN" >> $ARQUIVO_TOKEN
+    echo "PASTA_SALVAR_PLACA=$PASTA_SALVAR_PLACA" >> $ARQUIVO_TOKEN
+    echo "Arquivo de token criado!"
+fi
+. $ARQUIVO_TOKEN
+echo "Buscando placa $PLACA"
+mkdir -p "$PASTA_SALVAR_PLACA"
+if [[ $UID -ne 0 && ! -e "$PASTA_SALVAR_PLACA/$PLACA.json" ]]; then
+    echo "Placa $PLACA ainda não consultada"
+    wget -O "$PASTA_SALVAR_PLACA/$PLACA.json" https://wdapi2.com.br/consulta/$PLACA/$TOKEN
+fi
+if [[ $UID -ne 0 && -e "$PASTA_SALVAR_PLACA/$PLACA.json" ]]; then
+    echo "Placa $PLACA ainda já consultada anteriormente"
+fi
+firefox "$PASTA_SALVAR_PLACA/$PLACA.json"
