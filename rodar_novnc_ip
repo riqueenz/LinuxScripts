@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PASTA_AMBIENTE="$HOME/.venv/novnc"
+PASTA_HTML_NOVNC="$PASTA_AMBIENTE/novnc-git/noVNC"
+PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
+PORTA_NOVNC=26903
+source "$PASTA_AMBIENTE/bin/activate"
+
+echo "Qual o IP do VNC remoto?"
+read IP_PC
+
+#Configurar o python
+if [ -x $(command -v python3) ]; then
+  echo "Comando python3 encontrado!"
+  PYTHON=python3
+fi
+if [ -x $(command -v python) ]; then
+  echo "Comando python encontrado!"
+  PYTHON=python
+fi
+
+$PYTHON -m pip install --upgrade pip
+
+#Rodar usando novnc do ambiente virtual python
+$PYTHON -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC $IP_PC:5900
+
+echo ""
+echo "Endereço para acessar essa máquina:"
+echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
