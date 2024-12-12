@@ -5,6 +5,7 @@ echo "Verificação das atualizações do kernel Manjaro:" >> $HOME/0_data_atual
 
 if [ $KERNEL != "6.6." ] && [ $KERNEL != "6.12" ]; then
   echo "Instalando kernel 6.6"
+  yes s | mhwd-kernel -i linux66
   echo "Esse é o kernel LTS de backup!"
 fi
 
