@@ -36,3 +36,5 @@ if [ $KERNEL == "6.12" ]; then
   echo "yes s | mhwd-kernel -r linux61"
   yes s | mhwd-kernel -r linux61
 fi
+
+mhwd-kernel -li
