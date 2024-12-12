@@ -21,8 +21,7 @@ if [ -x "$(command -v pacman)" ]; then
   atualizar_pacman
 fi
 if [ -x "$(command -v mhwd-kernel)" ]; then
-  echo "yes s | mhwd-kernel -i linux612"
-  #yes s | mhwd-kernel -i linux612
+  atualizar_kernel_manjaro
 fi
 if [ -x "$(command -v apt)" ]; then
   atualizar_apt
