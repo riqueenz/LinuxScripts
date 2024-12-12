@@ -18,26 +18,31 @@ if [ $KERNEL == "6.1." ]; then
   echo "yes s | mhwd-kernel -i linux66"
   #yes s | mhwd-kernel -i linux66
   echo "yes s | mhwd-kernel -r linux419"
-  yes s | mhwd-kernel -r linux419
+  #yes s | mhwd-kernel -r linux419
 fi
 if [ $KERNEL == "6.6." ]; then
   echo "linux66 instalado!"
   echo "yes s | mhwd-kernel -i linux612"
   #yes s | mhwd-kernel -i linux612
   echo "yes s | mhwd-kernel -r linux419"
-  yes s | mhwd-kernel -r linux419
+  #yes s | mhwd-kernel -r linux419
   echo "yes s | mhwd-kernel -r linux510"
-  yes s | mhwd-kernel -r linux510
+  #yes s | mhwd-kernel -r linux510
 fi
 if [ $KERNEL == "6.12" ]; then
   echo "linux612 instalado!"
   echo "Esse é o kernel LTS que deve ser usado!"
   echo "yes s | mhwd-kernel -r linux419"
-  yes s | mhwd-kernel -r linux419
+  #yes s | mhwd-kernel -r linux419
   echo "yes s | mhwd-kernel -r linux510"
-  yes s | mhwd-kernel -r linux510
+  #yes s | mhwd-kernel -r linux510
   echo "yes s | mhwd-kernel -r linux61"
-  yes s | mhwd-kernel -r linux61
+  #yes s | mhwd-kernel -r linux61
+fi
+
+if [ $KERNEL != "6.12" ]; then
+  echo "linux612 não está instalado!"
+  echo "Esse é o kernel LTS mais novo!"
 fi
 
 echo "Final do script do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
