@@ -1,0 +1,7 @@
+#!/bin/bash 
+. detectar_distro
+if [ $KERNEL -eq "6.6." ]; then
+  echo "yes s | mhwd-kernel -i linux612"
+  #yes s | mhwd-kernel -i linux612
+  echo "linux66 instalado!"
+fi
