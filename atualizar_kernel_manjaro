@@ -1,7 +1,38 @@
 #!/bin/bash 
 . detectar_distro
-if [ $KERNEL -eq "6.6." ]; then
+if [ $KERNEL == "4.19" ]; then
+  echo "linux419 instalado!"
+  echo "yes s | mhwd-kernel -i linux510"
+  #yes s | mhwd-kernel -i linux510
+fi
+if [ $KERNEL == "5.10" ]; then
+  echo "linux510 instalado!"
+  echo "yes s | mhwd-kernel -i linux61"
+  #yes s | mhwd-kernel -i linux61
+fi
+if [ $KERNEL == "6.1." ]; then
+  echo "linux61 instalado!"
+  echo "yes s | mhwd-kernel -i linux66"
+  #yes s | mhwd-kernel -i linux66
+  echo "yes s | mhwd-kernel -r linux419"
+  yes s | mhwd-kernel -r linux419
+fi
+if [ $KERNEL == "6.6." ]; then
+  echo "linux66 instalado!"
   echo "yes s | mhwd-kernel -i linux612"
   #yes s | mhwd-kernel -i linux612
-  echo "linux66 instalado!"
+  echo "yes s | mhwd-kernel -r linux419"
+  yes s | mhwd-kernel -r linux419
+  echo "yes s | mhwd-kernel -r linux510"
+  yes s | mhwd-kernel -r linux510
+fi
+if [ $KERNEL == "6.12" ]; then
+  echo "linux612 instalado!"
+  echo "Esse é o kernel LTS que deve ser usado!"
+  echo "yes s | mhwd-kernel -r linux419"
+  yes s | mhwd-kernel -r linux419
+  echo "yes s | mhwd-kernel -r linux510"
+  yes s | mhwd-kernel -r linux510
+  echo "yes s | mhwd-kernel -r linux61"
+  yes s | mhwd-kernel -r linux61
 fi
