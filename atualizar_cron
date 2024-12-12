@@ -21,8 +21,8 @@ if [ -x "$(command -v pacman)" ]; then
   atualizar_pacman
 fi
 if [ -x "$(command -v mhwd-kernel)" ]; then
-  echo "mhwd-kernel -i linux66"
-  mhwd-kernel -i linux66
+  echo "mhwd-kernel -i linux612"
+  mhwd-kernel -i linux612
 fi
 if [ -x "$(command -v apt)" ]; then
   atualizar_apt
