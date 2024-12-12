@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Detectar a versão do kernel da distro
+KERNEL=$(uname -r)
+KERNEL=${KERNEL:0:4}
+
 # Detectar o gerenciador de pacotes da distro
 INSTALAR="echo"
 PROCURAR="comando procurar não implementado:"
@@ -104,4 +108,7 @@ echo " "
 echo "Distribuição linux detectada:"
 DISTRO=$ID
 echo "$DISTRO"
+echo "Kernel detectado:"
+echo "$KERNEL"
+uname -r
 echo " "
