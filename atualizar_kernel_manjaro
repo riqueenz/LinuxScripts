@@ -40,8 +40,13 @@ if [ $KERNEL == "6.12" ]; then
   #yes s | mhwd-kernel -r linux61
 fi
 
+if [ $KERNEL != "6.6." && $KERNEL != "6.12" ]; then
+  echo "linux66 não está instalado!"
+  echo "Esse é o kernel LTS mais novo!"
+fi
+
 if [ $KERNEL != "6.12" ]; then
-  echo "linux612 não está instalado!"
+  echo "linux612 não está sendo executado!"
   echo "Esse é o kernel LTS mais novo!"
 fi
 
