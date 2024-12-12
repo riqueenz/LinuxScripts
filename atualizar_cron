@@ -14,11 +14,15 @@ fi
 if [ -x "$(command -v flatpak)" ]; then
   atualizar_flatpak
 fi
+if [ -x "$(command -v pamac)" ]; then
+  atualizar_pamac
+fi
 if [ -x "$(command -v pacman)" ]; then
   atualizar_pacman
 fi
-if [ -x "$(command -v pamac)" ]; then
-  atualizar_pamac
+if [ -x "$(command -v mhwd-kernel)" ]; then
+  echo "mhwd-kernel -i linux66"
+  mhwd-kernel -i linux66
 fi
 if [ -x "$(command -v apt)" ]; then
   atualizar_apt
