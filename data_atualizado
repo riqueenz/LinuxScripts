@@ -1,2 +1,3 @@
 #!/bin/bash 
 cat /data_atualizado.txt
+cat /data_atualizado_chrome_flatpak.txt
