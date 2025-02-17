@@ -1,0 +1,5 @@
+#!/bin/bash 
+echo "flatpak update -y com.google.Chrome"
+flatpak update -y com.google.Chrome
+echo "Flatpak atualizado em:" > $HOME/data_atualizado_chrome_flatpak.txt
+echo $(date) >> $HOME/data_atualizado_chrome_flatpak.txt
