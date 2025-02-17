@@ -15,6 +15,11 @@ if [ $KERNEL != "6.12" ]; then
   yes s | mhwd-kernel -i linux612
 fi
 
+if [ $KERNEL == "6.12" ]; then
+  echo "Kernel 6.12 está instalado!"
+  yes s | mhwd-kernel -r linux61
+fi
+
 echo "Final do script do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 mhwd-kernel -li
