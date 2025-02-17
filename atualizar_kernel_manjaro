@@ -2,6 +2,7 @@
 . detectar_distro
 echo " " >> $HOME/0_data_atualizado.txt
 echo "Verificação das atualizações do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
 
 if [ $KERNEL != "6.6." ] && [ $KERNEL != "6.12" ]; then
   echo "Instalando kernel 6.6"
@@ -11,8 +12,9 @@ fi
 
 if [ $KERNEL != "6.12" ]; then
   echo "Instalando kernel 6.12"
-  echo "Esse é o kernel LTS mais novo!"
+  yes s | mhwd-kernel -i linux612
 fi
 
 echo "Final do script do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
+echo $(date) >> $HOME/0_data_atualizado.txt
 mhwd-kernel -li
