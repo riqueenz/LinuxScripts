@@ -17,6 +17,13 @@ fi
 
 if [ $KERNEL == "6.12" ]; then
   echo "Kernel 6.12 está instalado!"
+  echo "Removendo kernel antigo se houver..."
+  yes s | mhwd-kernel -r linux49
+  yes s | mhwd-kernel -r linux414
+  yes s | mhwd-kernel -r linux419
+  yes s | mhwd-kernel -r linux54
+  yes s | mhwd-kernel -r linux510
+  yes s | mhwd-kernel -r linux515
   yes s | mhwd-kernel -r linux61
 fi
 
