@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Definição das pastas de origem e destino
+ORIGEM=$1
+DESTINO=$2
+
+. parametros_das_pastas_da_rede
+
+# Verifica se o servidor está acessível
+if ping -c 1 "$IP_DO_SERVIDOR" &> /dev/null; then
+    echo "Servidor" $IP_DO_SERVIDOR "acessível."
+    
+    # Verifica se a pasta de origem existe
+    if [ -d "$ORIGEM" ]; then
+        echo "Iniciando backup..."
+        
+        # Cria a pasta de destino caso não exista
+        mkdir -p "$DESTINO"
+        
+        # Copia os arquivos novos e sobrescreve os alterados
+        rsync -av --progress "$ORIGEM/" "$DESTINO/"
+        
+        echo "Backup concluído com sucesso!"
+    else
+        echo "A pasta de origem não existe. Backup não realizado."
+    fi
+else
+    echo "Servidor" $IP_DO_SERVIDOR "inacessível. Backup não realizado."
+fi
+
