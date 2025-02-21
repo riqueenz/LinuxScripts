@@ -1,5 +1,0 @@
-#!/bin/bash
-wine 'C:\Teach2000\Teach2000.exe' & wine 'C:\Program Files\Teach2000\Teach2000.exe' & wine 'C:\Program Files (x86)\OpenTeacher\openteacher.exe' & wine 'C:\Program Files\OpenTeacher\openteacher.exe'
-#wine 'C:\Program Files\Teach2000\Teach2000.exe'
-#wine 'C:\Program Files (x86)\OpenTeacher\openteacher.exe'
-#wine 'C:\Program Files\OpenTeacher\openteacher.exe'
