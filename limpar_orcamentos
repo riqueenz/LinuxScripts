@@ -1,6 +1,0 @@
-#!/bin/bash
-cd $HOME/Documentos/Zistema/sistemas/Hidraumak/arqs
-rm Orçamento*
-rm Cotação*
-rm "Ordem de Compra"*
-clear
