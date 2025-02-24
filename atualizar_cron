@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Fazer linux considerar a hora da Bios como fuso horário local
+# Resolve problema da hora no dual boot com Windows
+timedatectl set-local-rtc 1
+
 . detectar_distro
 
 echo "Iniciando atualização"
