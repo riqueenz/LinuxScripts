@@ -1,5 +1,6 @@
-@reboot sleep 60 && montar_pastas_da_rede
 @reboot sleep 20 && atualizar_chrome_flatpak
+@reboot sleep 60 && montar_pastas_da_rede
+@reboot sleep 300 && atualizar_scripts
 59 03 * * * atualizar_cron
 40 11 * * * atualizar_cron
 05 18 * * * atualizar_cron
