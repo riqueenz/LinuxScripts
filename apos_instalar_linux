@@ -161,6 +161,7 @@ flatpak install flathub --system --assumeyes com.google.Chrome
 flatpak install flathub --system --assumeyes eu.scarpetta.PDFMixTool
 flatpak install flathub --system --assumeyes io.github.shiftey.Desktop # GitHub Desktop
 flatpak install flathub --system --assumeyes org.freecad.FreeCAD
+flatpak install flathub --system --assumeyes com.github.tchx84.Flatseal
 if ! [ -x "$(command -v openshot)" ]; then
   flatpak install flathub --system --assumeyes org.openshot.OpenShot
 else
