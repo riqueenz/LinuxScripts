@@ -9,11 +9,15 @@ git clone https://github.com/riqueenz/LinuxScripts.git
 cd LinuxScripts
 chmod +x *
 \cp * /usr/bin
-if [ $DISTRO == "manjaro" ] || [ $DISTRO == "arch" ]; then
-  echo "Atualizando configuração do faillock"
+
+if [ $DISTRO == "manjaro" ]; then
+  echo "Atualizando configurações"
   echo "Configuração do faillock atualizado em:" >> $HOME/0_data_atualizado.txt
   \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
+  echo "Configuração do pacman.conf atualizada em:" >> $HOME/0_data_atualizado.txt
+  \cp $HOME/LinuxScripts/config/etc/pacman.conf /etc/pacman.conf
 fi
+
 rm -rf ../LinuxScripts
 cd $HOME
 echo $(date) >> $HOME/0_data_atualizado.txt
