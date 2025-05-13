@@ -32,7 +32,7 @@ source "$PASTA_AMBIENTE/bin/activate"
 $PYTHON -m pip install websockify
 $PYTHON -m pip install numpy
 $PYTHON -m pip install novnc
-mkdir - p "$PASTA_AMBIENTE/novnc-git"
+mkdir -p "$PASTA_AMBIENTE/novnc-git"
 cd "$PASTA_AMBIENTE/novnc-git"
 git clone https://github.com/novnc/noVNC.git
 #git clone -b v1.4.0 https://github.com/novnc/noVNC.git
@@ -41,4 +41,5 @@ git clone https://github.com/novnc/noVNC.git
 openssl req -x509 -nodes -newkey rsa:3072 -keyout "$PASTA_AMBIENTE/novnc.pem" -out "$PASTA_AMBIENTE/novnc.pem" -days 3650
 
 #gerar uma senha
+mkdir -p "$HOME/.vnc"
 vncpasswd
