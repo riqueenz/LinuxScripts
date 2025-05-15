@@ -1,10 +1,15 @@
 #!/bin/bash
-mkdir -p $HOME/snap/freecad/common/Mod
-cd $HOME/snap/freecad/common/Mod
-git clone https://github.com/kbwbe/A2plus.git
+PASTAMOD = $HOME/.var/app/org.freecad.FreeCAD/data/FreeCAD/Mod
+PASTACONFIG = $HOME/.var/app/org.freecad.FreeCAD/config/FreeCAD
+mkdir -p $PASTAMOD
+cd $PASTAMOD
 git clone https://github.com/shaise/FreeCAD_SheetMetal.git
 git clone https://github.com/looooo/freecad.gears.git
 git clone https://github.com/shaise/FreeCAD_FastenersWB.git
 git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/mooc-workbench.git
-git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/Glass.git
-git clone -b FreeCAD-mechanical --single-branch https://github.com/riqueenz/TabBar.git
+
+mkdir -p $PASTACONFIG
+cd $PASTACONFIG
+rm system.cfg user.cfg
+wget https://raw.githubusercontent.com/riqueenz/Free-CAD-config/refs/heads/main/Configura%C3%A7%C3%B5es%20do%20usu%C3%A1rio/FreeCAD%20Flatpak/system.cfg
+wget https://github.com/riqueenz/Free-CAD-config/blob/main/Configura%C3%A7%C3%B5es%20do%20usu%C3%A1rio/FreeCAD%20Flatpak/user.cfg
