@@ -1,6 +1,6 @@
 #!/bin/bash
-PASTAMOD = $HOME/.var/app/org.freecad.FreeCAD/data/FreeCAD/Mod
-PASTACONFIG = $HOME/.var/app/org.freecad.FreeCAD/config/FreeCAD
+PASTAMOD=$HOME/.var/app/org.freecad.FreeCAD/data/FreeCAD/Mod
+PASTACONFIG=$HOME/.var/app/org.freecad.FreeCAD/config/FreeCAD
 mkdir -p $PASTAMOD
 cd $PASTAMOD
 git clone https://github.com/shaise/FreeCAD_SheetMetal.git
