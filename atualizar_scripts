@@ -18,6 +18,7 @@ if [ $DISTRO == "manjaro" ]; then
   \cp $HOME/LinuxScripts/config/etc/pamac.conf /etc/pamac.conf
   instalar ntfs-3g
   \cp $HOME/LinuxScripts/config/etc/modprobe.d/blacklist.conf /etc/modprobe.d/blacklist.conf
+  \cp $HOME/LinuxScripts/config/etc/polkit-1/rules.d/10-udisks2-mount.rules /etc/polkit-1/rules.d/10-udisks2-mount.rules
 fi
 
 rm -rf ../LinuxScripts
