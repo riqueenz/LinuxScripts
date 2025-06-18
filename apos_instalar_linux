@@ -142,6 +142,9 @@ fi
 # Drivers adicionais HP
 $INSTALAR hplip
 
+# Drivers ntfs-3g (alternativa melhor ao ntfs3)
+$INSTALAR ntfs-3g
+
 echo "Copiando scripts"
 echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
 cd $HOME
