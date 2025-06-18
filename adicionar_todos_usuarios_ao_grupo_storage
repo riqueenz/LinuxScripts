@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Caminho da regra do polkit
 RULE_PATH="/etc/polkit-1/rules.d/10-udisks2-mount.rules"
 chmod 644 "$RULE_PATH"
