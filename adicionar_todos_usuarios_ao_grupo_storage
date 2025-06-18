@@ -1,0 +1,25 @@
+# Caminho da regra do polkit
+RULE_PATH="/etc/polkit-1/rules.d/10-udisks2-mount.rules"
+chmod 644 "$RULE_PATH"
+
+# Detecta todos os usuários com pasta em /home
+echo "Detectando usuários com pasta em /home..."
+USER_LIST=$(ls /home)
+
+if [ -z "$USER_LIST" ]; then
+  echo "Nenhum usuário encontrado em /home."
+else
+  for USER in $USER_LIST; do
+    if id "$USER" &>/dev/null; then
+      echo "Adicionando usuário '$USER' ao grupo 'storage'..."
+      usermod -aG storage "$USER"
+    else
+      echo "Usuário '$USER' não encontrado no sistema (ignorando)."
+    fi
+  done
+fi
+
+echo
+echo "Configuração concluída!"
+echo "Reinicie a sessão dos usuários adicionados para aplicar o grupo."
+
