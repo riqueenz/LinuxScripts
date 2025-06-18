@@ -16,6 +16,8 @@ if [ $DISTRO == "manjaro" ]; then
   \cp $HOME/LinuxScripts/config/etc/security/faillock.conf /etc/security/faillock.conf
   \cp $HOME/LinuxScripts/config/etc/pacman.conf /etc/pacman.conf
   \cp $HOME/LinuxScripts/config/etc/pamac.conf /etc/pamac.conf
+  instalar ntfs-3g
+  \cp $HOME/LinuxScripts/config/etc/modprobe.d/blacklist.conf /etc/modprobe.d/blacklist.conf
 fi
 
 rm -rf ../LinuxScripts
