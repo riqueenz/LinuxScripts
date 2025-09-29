@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Detectar a versão do kernel da distro
-KERNEL=$(uname -r)
-KERNEL=${KERNEL:0:4}
+# Obtém a versão completa do kernel da distro
+FULL_KERNEL=$(uname -r)
+# Extrai apenas os dois primeiros campos (ex: 6.6.51-1-lts -> 6.6)
+KERNEL=$(echo "$FULL_KERNEL" | cut -d. -f1,2)
+echo "Versão detectada: $KERNEL"
 
 # Detectar o gerenciador de pacotes da distro
 INSTALAR="echo"
