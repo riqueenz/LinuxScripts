@@ -1,0 +1,19 @@
+#!/bin/bash
+PASTA=$HOME/Documentos/Solaris_WinTS_Linux
+APPIMAGE="wine-stable_10.0-x86_64.AppImage"
+INSTALADOR="WinTs3-903.exe"
+PASTA_INSTALACAO="$PASTA/WineprefixSolaris/drive_c/WinTs2"
+EXECUTAVEL="$PASTA_INSTALACAO/WinTs.exe"
+
+cd $PASTA
+chmod +x "$PASTA/$APPIMAGE"
+
+#Comando para rodar executável instalado
+cd $PASTA
+env WINEPREFIX="$PASTA/WineprefixSolaris" "./$APPIMAGE" "$EXECUTAVEL"
+
+#Rodar winecfg
+#env WINEPREFIX="$PASTA/WineprefixSolaris" "./$APPIMAGE" winecfg
+
+#Comando para rodar instalador
+#env WINEPREFIX="$PASTA/WineprefixSolaris" "./$APPIMAGE" "$PASTA/$INSTALADOR"
