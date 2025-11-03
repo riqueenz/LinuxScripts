@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "sudo systemctl stop lightdm.service"
+sudo systemctl stop lightdm.service
+echo "systemctl start gdm.service"
+sudo systemctl start gdm.service
