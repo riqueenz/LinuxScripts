@@ -1,5 +1,9 @@
 #!/bin/bash
-echo "sudo systemctl stop lightdm.service"
-sudo systemctl stop lightdm.service
-echo "systemctl start gdm.service"
+echo "sudo systemctl disable lightdm.service --force"
+echo "sudo systemctl enable gdm.service"
+echo "sudo systemctl start gdm.service"
+echo "sudo reboot"
+sudo sudo systemctl disable lightdm.service --force
+sudo systemctl enable gdm.service
 sudo systemctl start gdm.service
+sudo reboot
