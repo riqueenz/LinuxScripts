@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#Configurar o python
+if [ -x $(command -v python3) ]; then
+  echo "Comando python3 encontrado!"
+  PYTHON=python3
+fi
+if [ -x $(command -v python) ]; then
+  echo "Comando python encontrado!"
+  PYTHON=python
+fi
+
+# Script para converter arquivos Fitdays*.xls em CSV usando o conversor Python
+
+# Caminho para o script Python
+SCRIPT_PY="/usr/bin/converter_fitdays_para_garmin.py"
+
+# Procura todos os arquivos Fitdays*.csv na pasta Downloads
+arquivos=(~/Downloads/Fitdays*.csv)
+
+# Verifica se o script Python existe
+if [ ! -f "$SCRIPT_PY" ]; then
+    echo "Erro: não encontrei o script Python '$SCRIPT_PY'"
+    exit 1
+fi
+
+# Verifica se a biblioteca xlrd está instalada
+if ! $PYTHON -c "import xlrd" >/dev/null 2>&1; then
+    echo "A biblioteca 'xlrd' não está instalada."
+    instalar python-xlrd
+    instalar python3-xlrd
+fi
+
+# Verifica se encontrou algum arquivo
+if [ ! -e "${arquivos[0]}" ]; then
+    echo "Nenhum arquivo Fitdays*.csv encontrado no diretório atual."
+    exit 0
+fi
+
+# Loop pelos arquivos encontrados
+for arquivo in "${arquivos[@]}"; do
+    echo "Convertendo: $arquivo"
+    python3 "$SCRIPT_PY" "$arquivo"
+done
+
+echo "Conversão concluída!"
+
