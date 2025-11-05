@@ -98,12 +98,12 @@ def xls_para_csv_filtrado(arquivo_xls, arquivo_csv=None, indice_planilha=0):
 
             writer.writerow(nova_linha)
 
-    print(f"✅ Arquivo CSV filtrado criado com sucesso: {arquivo_csv}")
+    print(f"Arquivo CSV convertido de Fitdays para Garmin criado com sucesso: {arquivo_csv}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Uso: python converter_xls_para_csv_filtrado.py arquivo.xls [arquivo.csv]")
     else:
-        xls_para_csv_filtrado(*sys.argv[1:])
+        xls_para_csv_convertido(*sys.argv[1:])
 
