@@ -39,13 +39,13 @@ def limpar_gordura(valor):
         return valor.strip()
     return valor
 
-def xls_para_csv_filtrado(arquivo_xls, arquivo_csv=None, indice_planilha=0):
+def xls_para_csv_convertido(arquivo_xls, arquivo_csv=None, indice_planilha=0):
     colunas_desejadas = ["Data", "Peso", "IMC", "Gordura corporal"]
     novos_nomes = ["date", "weight", "bmi", "fat"]
 
     if arquivo_csv is None:
         base = os.path.splitext(arquivo_xls)[0]
-        arquivo_csv = base + "_filtrado.csv"
+        arquivo_csv = base + "_convertido.csv"
 
     workbook = xlrd.open_workbook(arquivo_xls)
     sheet = workbook.sheet_by_index(indice_planilha)
@@ -103,7 +103,7 @@ def xls_para_csv_filtrado(arquivo_xls, arquivo_csv=None, indice_planilha=0):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python converter_xls_para_csv_filtrado.py arquivo.xls [arquivo.csv]")
+        print("Uso: python converter_xls_para_csv_convertido.py arquivo.xls [arquivo.csv]")
     else:
         xls_para_csv_convertido(*sys.argv[1:])
 
