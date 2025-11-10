@@ -29,3 +29,5 @@ echo "Atualizando configuração do Crontab"
 echo "Configuração do crontab atualizado em:" >> $HOME/0_data_atualizado.txt
 crontab_configurar
 echo $(date) >> $HOME/0_data_atualizado.txt
+
+flatpak install flathub --system --assumeyes io.github.kolunmi.Bazaar
