@@ -31,3 +31,4 @@ crontab_configurar
 echo $(date) >> $HOME/0_data_atualizado.txt
 
 flatpak install flathub --system --assumeyes io.github.kolunmi.Bazaar
+flatpak install flathub --system --assumeyes it.mijorus.gearlever
