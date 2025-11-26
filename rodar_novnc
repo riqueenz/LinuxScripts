@@ -1,5 +1,6 @@
 #!/bin/bash
 
+INTERFACE=$(echo $XDG_CURRENT_DESKTOP)
 PASTA_AMBIENTE="$HOME/.venv/novnc"
 PASTA_HTML_NOVNC="$PASTA_AMBIENTE/novnc-git/noVNC"
 PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
@@ -28,7 +29,8 @@ echo ""
 echo "Endereço para acessar essa máquina:"
 echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
 
-#Rodar usando novnc snap
-#websockify -D --web=/var/lib/snapd/snap/novnc/current --cert=$HOME/novnc.pem 26901 localhost:5900
-#Rodar usando novnc do respositório do ubuntu
-#websockify -D --web=/usr/share/novnc/ --cert=/home/ubuntu/novnc.pem 6080 localhost:5900
+if [[ "$INTERFACE" == "sway:wlroots" ]]; then
+  echo "Compositor Sway detectado!"
+  echo "Rodando Wayvnc"
+  wayvnc
+fi
