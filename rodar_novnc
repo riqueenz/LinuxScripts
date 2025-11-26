@@ -32,5 +32,5 @@ echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
 if [[ "$INTERFACE" == "sway:wlroots" ]]; then
   echo "Compositor Sway detectado!"
   echo "Rode o comando wayvnc"
-  wayvnc
+  #wayvnc
 fi
