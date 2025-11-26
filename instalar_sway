@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+instalar sway
+instalar nwg-shell
+nwg-shell-installer --web
