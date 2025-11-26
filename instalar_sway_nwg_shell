@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# Instalador automático para Sway + nwg-shell + configurações personalizadas
+# Compatível com Manjaro Linux
+
+set -e
+
+echo "=== Instalador automático Sway + nwg-shell ==="
+
+# 1. Instalar pacotes necessários
+sudo pacman -S --needed --noconfirm \
+  sway swaybg swayidle swaylock \
+  alacritty wofi grim slurp wl-clipboard xorg-server-xwayland \
+  nwg-shell nwg-panel nwg-drawer nwg-menu nwg-look
+
+# 2. Criar diretórios de configuração
+mkdir -p ~/.config/sway
+mkdir -p ~/.config/nwg-shell
+
+# 3. Criar sway/config básico com nwg-shell
+cat > ~/.config/sway/config << 'EOF'
+set $mod Mod4
+set $term alacritty
+set $menu wofi --show drun
+
+font pango:DejaVu Sans 10
+
+exec nwg-shell
+exec swaybg -i ~/Pictures/wallpapers/wall1.jpg -m fill
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+l exec swaylock -f -c 000000
+
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+
+bindsym $mod+space exec nwg-drawer
+bindsym $mod+m exec nwg-menu
+bindsym $mod+Shift+p exec nwg-bar -mode power
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+EOF
+
+# 4. Configuração nwg-shell
+cat > ~/.config/nwg-shell/config.json << 'EOF'
+{
+  "panel": {
+    "position": "top",
+    "height": 32,
+    "modules_left": ["workspaces"],
+    "modules_center": ["clock"],
+    "modules_right": ["volume", "network", "battery", "tray", "powermenu"],
+    "theme": "dark"
+  },
+  "drawer": {
+    "enabled": true,
+    "icon_size": 48,
+    "favorites": ["alacritty", "firefox", "thunar"]
+  },
+  "menu": {
+    "icon_size": 32,
+    "show_search": true
+  },
+  "powermenu": {
+    "confirm": true
+  }
+}
+EOF
+
+# 5. CSS
+cat > ~/.config/nwg-shell/style.css << 'EOF'
+* {
+  font-family: "DejaVu Sans", sans-serif;
+  color: #eeeeee;
+}
+
+#panel {
+  background: rgba(20, 20, 20, 0.88);
+  border-bottom: 2px solid #444;
+}
+
+#drawer, #menu {
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: 12px;
+}
+EOF
+
+echo "=== Instalação concluída! ==="
+echo "Faça logout e escolha Sway na tela de login."
