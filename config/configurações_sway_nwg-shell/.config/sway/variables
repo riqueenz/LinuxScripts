@@ -1,0 +1,6 @@
+set $term kgx
+set $browser flatpak run com.google.Chrome
+set $filemanager nautilus
+set $editor gnome-text-editor
+set $launcher nwg-drawer
+set $exit $launcher
