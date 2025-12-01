@@ -27,15 +27,15 @@ if [[ "$SERVIDOR_GRAFICO" == "x11" ]]; then
   x0vncserver -rfbauth ~/.vnc/passwd &
 fi
 
+if [[ "$INTERFACE" == "sway:wlroots" ]]; then
+  echo "Compositor Sway detectado!"
+  echo 'wayvnc &'
+  wayvnc &
+fi
+
 #Rodar usando novnc do ambiente virtual python
 $PYTHON -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
 
 echo ""
 echo "Endereço para acessar essa máquina:"
 echo $(ip route | awk '{print $9}' | head -n 1)":$PORTA_NOVNC/vnc.html"
-
-if [[ "$INTERFACE" == "sway:wlroots" ]]; then
-  echo "Compositor Sway detectado!"
-  echo "Rode o comando wayvnc"
-  #wayvnc
-fi
