@@ -1,6 +1,7 @@
 #!/bin/bash
 
 INTERFACE=$(echo $XDG_CURRENT_DESKTOP)
+SERVIDOR_GRAFICO=$(echo $XDG_SESSION_TYPE)
 PASTA_AMBIENTE="$HOME/.venv/novnc"
 PASTA_HTML_NOVNC="$PASTA_AMBIENTE/novnc-git/noVNC"
 PASTA_CERTIFICADO="$PASTA_AMBIENTE/novnc.pem"
@@ -20,7 +21,11 @@ fi
 $PYTHON -m pip install --upgrade pip
 
 #rodar vnc
-x0vncserver -rfbauth ~/.vnc/passwd &
+if [[ "$SERVIDOR_GRAFICO" == "x11" ]]; then
+  echo "Xorg X11 detectado!"
+  echo 'x0vncserver -rfbauth ~/.vnc/passwd &'
+  x0vncserver -rfbauth ~/.vnc/passwd &
+fi
 
 #Rodar usando novnc do ambiente virtual python
 $PYTHON -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
