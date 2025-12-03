@@ -1,0 +1,18 @@
+#!/bin/bash
+if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
+  echo "Gnome detectado!"
+  echo "Instalando as extensões"
+  instalar gnome-shell-extensions
+  instalar gnome-shell-extension-appindicator
+  instalar gnome-shell-extension-arc-menu
+  instalar gnome-shell-extension-caffeine
+  instalar gnome-shell-extension-dash-to-dock
+  instalar gnome-shell-extension-dash-to-panel
+  instalar gnome-shell-extension-forge
+  instalar gnome-shell-extension-gnome-ui-tune
+  instalar gnome-shell-extension-gsconnect
+  instalar gnome-shell-extension-gtk4-desktop-icons-ng
+  instalar gnome-shell-extension-space-bar
+  instalar gnome-shell-extension-vitals
+  instalar gnome-shell-extension-weather-oclock
+fi
