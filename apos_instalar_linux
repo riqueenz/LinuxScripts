@@ -213,6 +213,8 @@ else
   echo 'distrobox já estava instalado.' >&2
 fi
 
+instalar_extensoes_gnome
+
 #Pasta de backup do sistema
 mkdir $HOME/Documentos/Zistema
 echo " "
