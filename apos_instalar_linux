@@ -162,7 +162,7 @@ cd $HOME
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub --system --assumeyes com.google.Chrome
 flatpak install flathub --system --assumeyes eu.scarpetta.PDFMixTool
-flatpak install flathub --system --assumeyes io.github.shiftey.Desktop # GitHub Desktop
+flatpak install flathub --system --assumeyes io.github.pol_rivero.github-desktop-plus # GitHub Desktop Plus
 flatpak install flathub --system --assumeyes org.freecad.FreeCAD
 flatpak install flathub --system --assumeyes com.github.tchx84.Flatseal
 flatpak install flathub --system --assumeyes io.github.kolunmi.Bazaar
