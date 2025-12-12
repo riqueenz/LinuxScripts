@@ -1,0 +1,10 @@
+#!/bin/bash
+# Instalar Tailscale pelo script do site
+curl -fsSL https://tailscale.com/install.sh | sh
+
+# Fazer o login na conta Tailscale
+tailscale up --advertise-exit-node
+
+# Configurar acesso a rede local
+sudo tailscale set --advertise-routes=192.168.0.0/24,192.168.2.0/24
+sudo tailscale set --exit-node-allow-lan-access

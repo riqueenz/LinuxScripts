@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Desabilita serviço do Tailscale"
+echo 'sudo systemctl disable --now tailscaled'
+sudo systemctl disable --now tailscaled

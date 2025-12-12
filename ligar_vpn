@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Habilita serviço do Tailscale"
+echo 'sudo systemctl enable --now tailscaled'
+sudo systemctl enable --now tailscaled
