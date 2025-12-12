@@ -3,3 +3,6 @@
 echo "Habilita serviço do Tailscale"
 echo 'sudo systemctl enable --now tailscaled'
 sudo systemctl enable --now tailscaled
+sudo tailscale up --advertise-exit-node
+sudo tailscale set --advertise-routes=192.168.0.0/24,192.168.2.0/24
+sudo tailscale set --exit-node-allow-lan-access

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Sai da conta do Tailscale"
+echo 'sudo tailscale logout'
+sudo tailscale logout
 echo "Desabilita serviço do Tailscale"
 echo 'sudo systemctl disable --now tailscaled'
 sudo systemctl disable --now tailscaled
