@@ -3,3 +3,4 @@ instalar virtualbox
 instalar virtualbox-guest-iso
 instalar virtualbox-guest-additions-iso
 sudo modprobe vboxdrv
+sudo usermod -a -G vboxusers $USER
