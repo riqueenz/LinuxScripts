@@ -4,6 +4,10 @@ $INSTALAR manjaro-printer
 $INSTALAR hplip-plugin
 $INSTALAR avahi
 $INSTALAR system-config-printer
+$INSTALAR python-pyqt5
+$INSTALAR python-pyqt5-sip
+$INSTALAR python3-pyqt5
+$INSTALAR python3-pyqt5.sip
 sudo gpasswd -a $USER sys
 sudo systemctl enable --now cups.service
 sudo systemctl enable --now cups.socket
