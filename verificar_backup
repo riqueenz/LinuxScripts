@@ -1,0 +1,18 @@
+#!/bin/bash
+
+IP_DO_BACKUP=192.168.0.173
+
+# instalar a dependência zenity se não estiver instalado
+instalar zenity
+
+# envia 2 pacotes e espera no máximo 2s cada
+ping -c 2 -W 2 $IP_DO_BACKUP > /dev/null 2>&1
+
+# verifica código de retorno do ping
+if [ $? -ne 0 ]; then
+    zenity --error \
+           --title="Backup offline!" \
+           --width=300 \
+           --text="PC do backup não acessível!"
+fi
+
