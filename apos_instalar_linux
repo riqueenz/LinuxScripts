@@ -145,6 +145,9 @@ $INSTALAR hplip
 # Drivers ntfs-3g (alternativa melhor ao ntfs3)
 $INSTALAR ntfs-3g
 
+# Zenity - mostrar interface gráfica em scripts
+$INSTALAR zenity
+
 echo "Copiando scripts"
 echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
 cd $HOME
