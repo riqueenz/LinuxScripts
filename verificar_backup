@@ -4,8 +4,7 @@ export DISPLAY=:0
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 
-#IP_DO_BACKUP=192.168.0.173
-IP_DO_BACKUP=192.168.0.37
+IP_DO_BACKUP=192.168.0.173
 
 # instalar a dependência zenity se não estiver instalado
 instalar zenity
