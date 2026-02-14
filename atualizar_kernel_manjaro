@@ -4,21 +4,19 @@ echo " " >> $HOME/0_data_atualizado.txt
 echo "Verificação das atualizações do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 
-if [ $KERNEL != "6.6" ] && [ $KERNEL != "6.12" ]; then
-  echo "Instalando kernel 6.6"
-  yes s | mhwd-kernel -i linux66
-  echo "Esse é o kernel LTS de backup!"
-fi
-
 if [ $KERNEL != "6.12" ]; then
   echo "Instalando kernel 6.12"
   yes s | mhwd-kernel -i linux612
 fi
 
-if [ $KERNEL == "6.12" ]; then
-  echo "Kernel 6.12 está instalado!"
+if [ $KERNEL != "6.18" ]; then
+  echo "Instalando kernel 6.18"
+  yes s | mhwd-kernel -i linux618
+fi
+
+if [ $KERNEL == "6.18" ]; then
+  echo "Kernel 6.18 está instalado!"
   echo "Removendo kernel antigo se houver..."
-  yes s | mhwd-kernel -r linux510
   yes s | mhwd-kernel -r linux515
   yes s | mhwd-kernel -r linux61
 fi
