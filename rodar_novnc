@@ -33,6 +33,12 @@ if [[ "$INTERFACE" == "sway:wlroots" ]]; then
   wayvnc &
 fi
 
+if [[ "$INTERFACE" == "LXQt:labwc:wlroots" ]]; then
+  echo "LXQT com compositor labwc detectado!"
+  echo 'wayvnc &'
+  wayvnc &
+fi
+
 #Rodar usando novnc do ambiente virtual python
 $PYTHON -m websockify -D --web="$PASTA_HTML_NOVNC" --cert="$PASTA_CERTIFICADO" $PORTA_NOVNC localhost:5900
 
