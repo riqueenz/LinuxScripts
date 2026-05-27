@@ -17,8 +17,7 @@ fi
 if [ $KERNEL == "6.18" ]; then
   echo "Kernel 6.18 está instalado!"
   echo "Removendo kernel antigo se houver..."
-  yes s | mhwd-kernel -r linux515
-  yes s | mhwd-kernel -r linux61
+  yes s | mhwd-kernel -r linux66
 fi
 
 echo "Final do script do kernel Manjaro:" >> $HOME/0_data_atualizado.txt
