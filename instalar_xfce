@@ -1,0 +1,54 @@
+#!/bin/bash
+# Gerenciador de login
+instalar lightdm
+instalar lightdm-gtk-greeter
+instalar lightdm-gtk-greeter-settings
+instalar lightdm-settings
+# Dependências do Xfce
+instalar xfce4
+instalar xfce4-goodies
+instalar xfce4-session
+instalar xfce4-settings
+instalar xfce4-appfinder
+instalar libxfce4ui
+instalar libxfce4ui-utils
+instalar xfce4-panel
+instalar xfce4-panel-profiles
+instalar xfce4-pulseaudio-plugin
+instalar xfconf
+instalar xfce4-notifyd
+instalar xfdesktop
+instalar xfdesktop4
+instalar xfwm4
+instalar xfce4-power-manager
+instalar thunar
+instalar thunar-archive-plugin
+instalar thunar-media-tags-plugin
+instalar thunar-shares-plugin
+instalar thunar-vcs-plugin
+instalar thunar-volman
+# Extensões do Xfce
+instalar xfce4-battery-plugin
+instalar xfce4-clipman-plugin
+instalar xfce4-docklike-plugin
+instalar xfce4-generic-slider
+instalar xfce4-netload-plugin
+instalar xfce4-places-plugin
+instalar xfce4-pulseaudio-plugin
+instalar xfce4-sensors-plugin
+instalar xfce4-systemload-plugin
+instalar xfce4-weather-plugin
+instalar xfce4-whiskermenu-plugin
+# Thumbnailers
+instalar xapp-thumbnailers-common
+instalar xapp-aiff-thumbnailer
+instalar xapp-appimage-thumbnailer
+instalar xapp-epub-thumbnailer
+instalar xapp-gimp-thumbnailer
+instalar xapp-jxl-thumbnailer
+instalar xapp-mp3-thumbnailer
+instalar xapp-ora-thumbnailer
+instalar xapp-raw-thumbnailer
+# Mais extras
+instalar xdg-desktop-portal
+instalar xdg-desktop-portal-xapp
