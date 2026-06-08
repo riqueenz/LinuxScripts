@@ -52,3 +52,10 @@ instalar xapp-raw-thumbnailer
 # Mais extras
 instalar xdg-desktop-portal
 instalar xdg-desktop-portal-xapp
+# Copiar configurações
+cd $HOME
+rm -rf LinuxScripts
+git clone https://github.com/riqueenz/LinuxScripts.git
+\cp $HOME/LinuxScripts/config/configurações_xfce/usr/share/xfce4-panel-profiles/layouts/* /usr/share/xfce4-panel-profiles/layouts
+\cp $HOME/LinuxScripts/config/configurações_xfce/etc/xdg/xfce4/* /etc/xdg/xfce4
+rm -rf LinuxScripts
