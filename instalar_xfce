@@ -30,8 +30,12 @@ instalar thunar-volman
 # Extensões do Xfce
 instalar xfce4-battery-plugin
 instalar xfce4-clipman-plugin
+instalar xfce4-diskperf-plugin
 instalar xfce4-docklike-plugin
+instalar xfce4-eyes-plugin
 instalar xfce4-generic-slider
+instalar xfce4-indicator-plugin
+instalar xfce4-mount-plugin
 instalar xfce4-netload-plugin
 instalar xfce4-places-plugin
 instalar xfce4-pulseaudio-plugin
@@ -39,6 +43,7 @@ instalar xfce4-sensors-plugin
 instalar xfce4-systemload-plugin
 instalar xfce4-weather-plugin
 instalar xfce4-whiskermenu-plugin
+instalar xfce4-windowck-plugin
 # Thumbnailers
 instalar xapp-thumbnailers-common
 instalar xapp-aiff-thumbnailer
