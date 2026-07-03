@@ -215,6 +215,17 @@ if ! [ -x "$(command -v distrobox)" ]; then
 else
   echo 'distrobox já estava instalado.' >&2
 fi
+if ! [ -x "$(command -v ping)" ]; then
+  $INSTALAR iputils
+  $INSTALAR iputils-ping
+else
+  echo 'ping já estava instalado.' >&2
+fi
+if ! [ -x "$(command -v firefox)" ]; then
+  echo 'Firefox não instalado por pacote da distro.' >&2
+else
+  $INSTALAR firefox-i18n-pt-br
+fi
 
 instalar_extensoes_gnome
 
