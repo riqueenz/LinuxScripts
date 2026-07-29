@@ -5,17 +5,19 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 
 IP_DO_BACKUP="192.168.0.173"
+PORTA=7070
 
-ESTADO=$(ip neigh show "$IP_DO_BACKUP" | awk '{print $NF}')
+# Verifica se o netcat está instalado
+if ! command -v nc >/dev/null 2>&1; then
+    instalar openbsd-netcat
+    instalar netcat-openbsd
+    instalar netcat
+fi
 
-case "$ESTADO" in
-    REACHABLE|STALE|DELAY|PROBE)
-        # Considera o equipamento acessível
-        ;;
-    *)
-        zenity --error \
-               --title="Backup offline!" \
-               --width=300 \
-               --text="PC do backup não acessível!"
-        ;;
-esac
+# Testa a conectividade com a porta TCP
+if ! nc -z -w 2 "$IP_DO_BACKUP" "$PORTA"; then
+    zenity --error \
+           --title="Backup offline!" \
+           --width=300 \
+           --text="PC do backup não acessível!"
+fi
