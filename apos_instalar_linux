@@ -144,6 +144,7 @@ $INSTALAR hplip
 
 # Drivers ntfs-3g (alternativa melhor ao ntfs3)
 $INSTALAR ntfs-3g
+$INSTALAR ntfsprogs
 
 # Zenity - mostrar interface gráfica em scripts
 $INSTALAR zenity
