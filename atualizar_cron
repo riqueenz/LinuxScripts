@@ -13,6 +13,9 @@ echo $(date) >> $HOME/0_data_atualizado.txt
 
 atualizar_scripts
 instalar firefox-i18n-pt-br
+instalar firefox-adblock-plus #17/08/2026
+instalar ntfs-3g #17/08/2026
+instalar ntfsprogs #17/08/2026
 
 if [ -x "$(command -v snap)" ]; then
   atualizar_snap
