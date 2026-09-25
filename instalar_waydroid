@@ -8,7 +8,10 @@ git clone https://github.com/casualsnek/waydroid_script
 cd waydroid_script
 python3 -m venv venv
 venv/bin/pip install -r requirements.txt
-sudo venv/bin/python3 main.py install {gapps, libhoudini, smartdock, widevine}
+sudo venv/bin/python3 main.py install gapps
+sudo venv/bin/python3 main.py install libhoudini
+sudo venv/bin/python3 main.py install smartdock
+sudo venv/bin/python3 main.py install widevine
 sudo venv/bin/python3 main.py install mitm --ca-cert mycert.pem
 sudo venv/bin/python3 main.py hack hidestatusbar
 waydroid show-full-ui
