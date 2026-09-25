@@ -14,11 +14,9 @@ sudo venv/bin/python3 main.py install smartdock
 sudo venv/bin/python3 main.py install widevine
 sudo venv/bin/python3 main.py install mitm --ca-cert mycert.pem
 sudo venv/bin/python3 main.py hack hidestatusbar
-waydroid show-full-ui
 echo "Registrar Android:"
 echo "Acesse https://google.com/android/uncertified/?pli=1"
 echo "Coloque o ID abaixo, espere 20 minutos e limpe o cache Google Play Services"
-sudo python3 main.py google
-xdg-open https://google.com/android/uncertified/?pli=1
+waydroid show-full-ui & sudo python3 main.py google & xdg-open https://google.com/android/uncertified/?pli=1
 cd ..
 sudo rm -rf waydroid_script
