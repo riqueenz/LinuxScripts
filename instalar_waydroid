@@ -1,8 +1,18 @@
 #!/bin/bash
 instalar waydroid
+sudo waydroid init -f -s GAPPS
 instalar lzip
+sudo waydroid init -f -s GAPPS
+sudo waydroid init -f -s GAPPS
 git clone https://github.com/casualsnek/waydroid_script
 cd waydroid_script
 python3 -m venv venv
 venv/bin/pip install -r requirements.txt
-sudo venv/bin/python3 main.py
+sudo venv/bin/python3 main.py install {gapps, libhoudini, smartdock, widevine}
+sudo venv/bin/python3 main.py hack hidestatusbar
+waydroid show-full-ui
+echo "Registrar Android:"
+echo "Acesse https://google.com/android/uncertified/?pli=1"
+echo "Coloque o ID abaixo, espere 20 minutos e limpe o cache Google Play Services"
+sudo python3 main.py google
+xdg-open https://google.com/android/uncertified/?pli=1
