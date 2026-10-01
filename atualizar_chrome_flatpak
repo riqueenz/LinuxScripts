@@ -3,5 +3,5 @@ echo "flatpak update -y com.google.Chrome"
 flatpak update -y com.google.Chrome
 echo "Google Chrome flatpak atualizado em:" > $HOME/data_atualizado_chrome_flatpak.txt
 echo $(date) >> $HOME/data_atualizado_chrome_flatpak.txt
-flatpak override --user --filesystem=/rede/projetos:ro com.google.Chrome
+flatpak override --filesystem=/rede/projetos:ro com.google.Chrome
 cp $HOME/data_atualizado_chrome_flatpak.txt /data_atualizado_chrome_flatpak.txt
