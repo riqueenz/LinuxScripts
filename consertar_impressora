@@ -1,11 +1,228 @@
 #!/bin/bash
-. detectar_distro
 
-sudo atualizar_scripts
+#Script antigo --------------------------------------------------------------
+#. detectar_distro
+
+#sudo atualizar_scripts
 
 # Scripts de downgrade
-$INSTALAR downgrade
+#$INSTALAR downgrade
 
-sudo DOWNGRADE_FROM_ALA=1 downgrade libcupsfilters
-sudo systemctl restart cups
+#sudo DOWNGRADE_FROM_ALA=1 downgrade libcupsfilters
+#sudo systemctl restart cups
 pacman -Q libcupsfilters
+#----------------------------------------------------------------------------
+
+set -euo pipefail
+
+echo "============================================================"
+echo "Correção temporária do libcupsfilters"
+echo " "
+echo "2.2.1-2 apresentou regressões de impressão."
+echo "2.1.1-4 foi testado e está funcionando."
+echo " "
+echo "Quando uma versão corrigida estiver disponível, o script"
+echo "informa que o IgnorePkg deve ser removido para permitir"
+echo "o teste da nova versão."
+echo "============================================================"
+
+PACKAGE="libcupsfilters"
+GOOD_VERSION="2.1.1-4"
+ARCH="$(uname -m)"
+CACHE="/var/cache/pacman/pkg"
+PACMAN_CONF="/etc/pacman.conf"
+
+echo
+echo "=========================================="
+echo " Verificação do libcupsfilters"
+echo "=========================================="
+
+# ------------------------------------------------------------
+# Verificar arquitetura
+# ------------------------------------------------------------
+
+if [[ "$ARCH" != "x86_64" ]]; then
+    echo "ERRO: arquitetura não suportada: $ARCH"
+    exit 1
+fi
+
+# ------------------------------------------------------------
+# Verificar se o pacote está instalado
+# ------------------------------------------------------------
+
+if ! pacman -Q "$PACKAGE" &>/dev/null; then
+    echo "ERRO: $PACKAGE não está instalado."
+    exit 1
+fi
+
+CURRENT_VERSION="$(pacman -Q "$PACKAGE" | awk '{print $2}')"
+
+echo "Versão instalada: $CURRENT_VERSION"
+echo "Versão conhecida como funcional: $GOOD_VERSION"
+
+# ------------------------------------------------------------
+# Função para adicionar o pacote ao IgnorePkg
+# ------------------------------------------------------------
+
+add_ignorepkg() {
+
+    if grep -Eq '^[[:space:]]*IgnorePkg[[:space:]]*=' "$PACMAN_CONF"; then
+
+        if grep -Eq '^[[:space:]]*IgnorePkg[[:space:]]*=.*(^|[[:space:]])'"$PACKAGE"'([[:space:]]|$)' "$PACMAN_CONF"; then
+            echo "$PACKAGE já está no IgnorePkg."
+        else
+            echo "Adicionando $PACKAGE ao IgnorePkg..."
+
+            sudo sed -i \
+                -E '/^[[:space:]]*IgnorePkg[[:space:]]*=/ s/$/ '"$PACKAGE"'/' \
+                "$PACMAN_CONF"
+        fi
+
+    else
+
+        echo "Criando IgnorePkg para $PACKAGE..."
+
+        echo "" | sudo tee -a "$PACMAN_CONF" >/dev/null
+        echo "# Temporariamente congelado devido a regressão de impressão" |
+            sudo tee -a "$PACMAN_CONF" >/dev/null
+        echo "IgnorePkg = $PACKAGE" |
+            sudo tee -a "$PACMAN_CONF" >/dev/null
+    fi
+}
+
+# ------------------------------------------------------------
+# Se já estiver na versão funcional
+# ------------------------------------------------------------
+
+if [[ "$CURRENT_VERSION" == "$GOOD_VERSION" ]]; then
+
+    echo
+    echo "$PACKAGE já está em $GOOD_VERSION."
+
+    add_ignorepkg
+
+else
+
+    echo
+    echo "A versão instalada não é a versão conhecida como funcional."
+    echo "Será feito downgrade para $GOOD_VERSION."
+
+    PACKAGE_FILE=""
+
+    # --------------------------------------------------------
+    # Procurar no cache local
+    # --------------------------------------------------------
+
+    PACKAGE_FILE="$(find "$CACHE" \
+        -maxdepth 1 \
+        -type f \
+        -name "${PACKAGE}-${GOOD_VERSION}-${ARCH}.pkg.tar.*" \
+        | head -n 1 || true)"
+
+    # --------------------------------------------------------
+    # Se não estiver no cache, baixar do Arch Linux Archive
+    # --------------------------------------------------------
+
+    if [[ -z "$PACKAGE_FILE" ]]; then
+
+        echo
+        echo "Pacote não encontrado no cache."
+        echo "Baixando $PACKAGE-$GOOD_VERSION..."
+
+        URL="https://archive.archlinux.org/packages/l/libcupsfilters/libcupsfilters-${GOOD_VERSION}-${ARCH}.pkg.tar.zst"
+
+        TEMP_FILE="/tmp/libcupsfilters-${GOOD_VERSION}-${ARCH}.pkg.tar.zst"
+
+        curl -fL \
+            --retry 3 \
+            --retry-delay 2 \
+            "$URL" \
+            -o "$TEMP_FILE"
+
+        # ----------------------------------------------------
+        # Verificar se o arquivo realmente existe
+        # ----------------------------------------------------
+
+        if [[ ! -s "$TEMP_FILE" ]]; then
+            echo "ERRO: download do pacote falhou."
+            rm -f "$TEMP_FILE"
+            exit 1
+        fi
+
+        sudo cp "$TEMP_FILE" "$CACHE/"
+
+        rm -f "$TEMP_FILE"
+
+        PACKAGE_FILE="$CACHE/libcupsfilters-${GOOD_VERSION}-${ARCH}.pkg.tar.zst"
+
+    fi
+
+    # --------------------------------------------------------
+    # Instalar versão conhecida como funcional
+    # --------------------------------------------------------
+
+    echo
+    echo "Instalando:"
+    echo "  $PACKAGE_FILE"
+    echo
+
+    sudo pacman -U --noconfirm "$PACKAGE_FILE"
+
+    # --------------------------------------------------------
+    # Confirmar versão instalada
+    # --------------------------------------------------------
+
+    NEW_VERSION="$(pacman -Q "$PACKAGE" | awk '{print $2}')"
+
+    if [[ "$NEW_VERSION" != "$GOOD_VERSION" ]]; then
+        echo
+        echo "ERRO: o downgrade não resultou na versão esperada."
+        echo "Esperado: $GOOD_VERSION"
+        echo "Obtido:   $NEW_VERSION"
+        exit 1
+    fi
+
+    echo
+    echo "Downgrade concluído com sucesso."
+
+    add_ignorepkg
+fi
+
+# ------------------------------------------------------------
+# Reiniciar CUPS
+# ------------------------------------------------------------
+
+echo
+echo "Reiniciando CUPS..."
+
+sudo systemctl restart cups
+
+if ! systemctl is-active --quiet cups; then
+    echo "ERRO: o CUPS não iniciou corretamente."
+    exit 1
+fi
+
+echo "CUPS funcionando."
+
+# ------------------------------------------------------------
+# Verificação final
+# ------------------------------------------------------------
+
+echo
+echo "=========================================="
+echo " Resultado"
+echo "=========================================="
+
+pacman -Q "$PACKAGE"
+
+echo
+echo "CUPS:"
+systemctl is-active cups
+
+echo
+echo "IgnorePkg:"
+grep -E '^[[:space:]]*IgnorePkg' "$PACMAN_CONF" || echo "Não encontrado."
+
+echo
+echo "Correção do libcupsfilters concluída."
+echo
