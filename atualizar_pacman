@@ -23,6 +23,8 @@ else
     echo "O pacote btrfsmaintenance não está instalado no sistema."
 fi
 
+consertar_impressora
+
 # Substituir pacotes obsoletos
 if [ -x "$(command -v neofetch)" ]; then
   echo "pacman -S fastfetch --noconfirm"
