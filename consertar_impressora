@@ -66,7 +66,24 @@ echo "Versão conhecida como funcional: $GOOD_VERSION"
 
 add_ignorepkg() {
 
-    \cp $HOME/LinuxScripts/config/etc/pacman-libcupsfilters.conf /etc/pacman.conf
+    if grep -Eq '^[[:space:]]*IgnorePkg[[:space:]]*=.*\blibcupsfilters\b' "$PACMAN_CONF"; then
+        echo "libcupsfilters já está no IgnorePkg."
+        return
+    fi
+
+    if grep -Eq '^[[:space:]]*#IgnorePkg[[:space:]]*=' "$PACMAN_CONF"; then
+        echo "Configurando IgnorePkg = libcupsfilters..."
+
+        sudo sed -i \
+            '0,/^[[:space:]]*#IgnorePkg[[:space:]]*=.*/s//IgnorePkg = libcupsfilters/' \
+            "$PACMAN_CONF"
+
+        echo "libcupsfilters adicionado ao IgnorePkg."
+    else
+        echo "ERRO: não encontrei a diretiva #IgnorePkg no pacman.conf."
+        echo "O arquivo não foi modificado."
+        return 1
+    fi
 }
 
 # ------------------------------------------------------------
