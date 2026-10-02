@@ -149,6 +149,10 @@ $INSTALAR ntfsprogs
 # Zenity - mostrar interface gráfica em scripts
 $INSTALAR zenity
 
+# Scripts de downgrade
+$INSTALAR downgrade
+$INSTALAR manjaro-downgrade
+
 echo "Copiando scripts"
 echo "Scripts atualizados em:" > $HOME/0_data_atualizado.txt
 cd $HOME
