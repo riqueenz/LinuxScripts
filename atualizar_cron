@@ -47,8 +47,6 @@ if ! [ -x "$(command -v ntfsfix)" ]; then
   echo "O pacote ntfsprogs não está instalado" >&2
   instalar ntfsprogs
 fi
-grep -E '^IgnorePkg' /etc/pacman.conf # Temporariamente ignorado devido à regressão de impressão da série 2.2.x (02/10/2026)
-pacman -Q libcupsfilters
 
 echo " "
 cat $HOME/0_data_atualizado.txt
@@ -56,3 +54,8 @@ cp $HOME/0_data_atualizado.txt /data_atualizado.txt
 
 mkdir -p /rede
 chmod 777 /rede
+
+if [ $DISTRO == "manjaro" ]; then
+  grep -E '^IgnorePkg' /etc/pacman.conf # Temporariamente ignorado devido à regressão de impressão da série 2.2.x (02/10/2026)
+  pacman -Q libcupsfilters
+fi
