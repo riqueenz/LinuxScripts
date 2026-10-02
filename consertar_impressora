@@ -1,0 +1,10 @@
+#!/bin/bash
+. detectar_distro
+
+# Scripts de downgrade
+$INSTALAR downgrade
+$INSTALAR manjaro-downgrade
+
+sudo DOWNGRADE_FROM_ALA=1 downgrade libcupsfilters
+sudo systemctl restart cups
+pacman -Q libcupsfilters
