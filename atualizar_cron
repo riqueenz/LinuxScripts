@@ -41,9 +41,12 @@ fi
 # Mudanças temporárias
 instalar firefox-i18n-pt-br
 instalar firefox-adblock-plus #17/08/2026
-instalar ntfs-3g #17/08/2026
-instalar ntfsprogs #17/08/2026
 instalar downgrade #02/10/2026
+instalar ntfs-3g #17/08/2026
+if ! [ -x "$(command -v ntfsfix)" ]; then
+  echo "O pacote ntfsprogs não está instalado" >&2
+  instalar ntfsprogs
+fi
 grep -E '^IgnorePkg' /etc/pacman.conf # Temporariamente ignorado devido à regressão de impressão da série 2.2.x (02/10/2026)
 pacman -Q libcupsfilters
 
