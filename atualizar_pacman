@@ -13,9 +13,21 @@ echo "Limpeza de pacotes:" >> $HOME/0_data_atualizado.txt
 echo $(date) >> $HOME/0_data_atualizado.txt
 echo "Obs: AUR desativado" >> $HOME/0_data_atualizado.txt
 
-echo "Consertar aviso Aviso: btrfsmaintenance: local (1:0.5.2-1) é mais novo que extra (0.5.2-3) manjaro (02/10/2026)"
-echo "pacman -Syuu --noconfirm btrfsmaintenance"
-pacman -Syuu --noconfirm btrfsmaintenance # 02/10/2026
+# Procedimentos temporários
+if pacman -Q btrfsmaintenance &> /dev/null; then
+    echo "O pacote btrfsmaintenance está instalado. Iniciando a atualização..."
+    echo "Consertar aviso Aviso: btrfsmaintenance: local (1:0.5.2-1) é mais novo que extra (0.5.2-3) manjaro (02/10/2026)"
+    echo "pacman -Syuu --noconfirm btrfsmaintenance"
+    sudo pacman -Syuu --noconfirm btrfsmaintenance
+else
+    echo "O pacote btrfsmaintenance não está instalado no sistema."
+fi
+
+if pacman -Q teste &> /dev/null; then
+    echo "O pacote teste está instalado. Iniciando a atualização..."
+else
+    echo "O pacote teste não está instalado no sistema."
+fi
 
 # Substituir pacotes obsoletos
 if [ -x "$(command -v neofetch)" ]; then
