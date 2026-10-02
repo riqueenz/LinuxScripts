@@ -66,28 +66,7 @@ echo "Versão conhecida como funcional: $GOOD_VERSION"
 
 add_ignorepkg() {
 
-    if grep -Eq '^[[:space:]]*IgnorePkg[[:space:]]*=' "$PACMAN_CONF"; then
-
-        if grep -Eq '^[[:space:]]*IgnorePkg[[:space:]]*=.*(^|[[:space:]])'"$PACKAGE"'([[:space:]]|$)' "$PACMAN_CONF"; then
-            echo "$PACKAGE já está no IgnorePkg."
-        else
-            echo "Adicionando $PACKAGE ao IgnorePkg..."
-
-            sudo sed -i \
-                -E '/^[[:space:]]*IgnorePkg[[:space:]]*=/ s/$/ '"$PACKAGE"'/' \
-                "$PACMAN_CONF"
-        fi
-
-    else
-
-        echo "Criando IgnorePkg para $PACKAGE..."
-
-        echo "" | sudo tee -a "$PACMAN_CONF" >/dev/null
-        echo "# Temporariamente congelado devido a regressão de impressão" |
-            sudo tee -a "$PACMAN_CONF" >/dev/null
-        echo "IgnorePkg = $PACKAGE" |
-            sudo tee -a "$PACMAN_CONF" >/dev/null
-    fi
+    \cp $HOME/LinuxScripts/config/etc/pacman-libcupsfilters.conf /etc/pacman.conf
 }
 
 # ------------------------------------------------------------
