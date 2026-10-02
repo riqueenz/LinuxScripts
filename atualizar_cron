@@ -17,7 +17,6 @@ instalar firefox-adblock-plus #17/08/2026
 instalar ntfs-3g #17/08/2026
 instalar ntfsprogs #17/08/2026
 instalar downgrade #02/10/2026
-instalar manjaro-downgrade #02/10/2026
 
 if [ -x "$(command -v snap)" ]; then
   atualizar_snap
