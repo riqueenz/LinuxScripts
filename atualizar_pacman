@@ -23,7 +23,18 @@ else
     echo "O pacote btrfsmaintenance não está instalado no sistema."
 fi
 
-#consertar_impressora
+VERSAO_LIBCUPSFILTERS=$(pacman -Q libcupsfilters)
+if [[ "$VERSAO_LIBCUPSFILTERS" == "libcupsfilters 2.1.1-4" ]]; then
+    echo "A versão correta do libcupsfilters está instalada"
+    pacman -Q libcupsfilters
+    echo "Essa é a última versão funcional conhecida"
+else
+    echo "Essa versão libcupsfilters tem problemas para imprimir"
+    pacman -Q libcupsfilters
+    echo "Vamos fazer o downgrade dessa versão para a 2.1.1-4"
+    echo "Essa é a última versão funcional conhecida"
+    consertar_impressora
+fi
 
 # Substituir pacotes obsoletos
 if [ -x "$(command -v neofetch)" ]; then
