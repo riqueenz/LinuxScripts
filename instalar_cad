@@ -2,7 +2,7 @@
 flatpak remote-add --if-not-exists flatpark https://dl.flatpark.org/flatpark.flatpakrepo
 
 #IngeCAD
-flatpak install flatpark org.ingecad.IngeCAD
+flatpak install flatpark --assumeyes org.ingecad.IngeCAD
 flatpak override --filesystem=/rede org.ingecad.IngeCAD
 flatpak override --filesystem=~/.config/IngeCAD:ro org.ingecad.IngeCAD /home/hidraumak
 flatpak override --filesystem=/home/hidraumak/.config/IngeCAD:ro org.ingecad.IngeCAD
@@ -10,7 +10,7 @@ flatpak override --filesystem=host-etc:ro org.ingecad.IngeCAD
 flatpak override --socket=cups org.ingecad.IngeCAD
 
 #OpenCadStudio
-flatpak install flatpark io.github.HakanSeven12.OpenCadStudio
+flatpak install flatpark --assumeyes io.github.HakanSeven12.OpenCadStudio
 flatpak override --filesystem=/rede io.github.HakanSeven12.OpenCadStudio
 flatpak override --filesystem=~/.config/IngeCAD:ro io.github.HakanSeven12.OpenCadStudio /home/hidraumak
 flatpak override --filesystem=/home/hidraumak/.config/IngeCAD:ro io.github.HakanSeven12.OpenCadStudio
